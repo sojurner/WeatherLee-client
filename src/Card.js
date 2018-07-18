@@ -1,26 +1,26 @@
-// import React, { Component } from 'react'
+// // import React, { Component } from 'react'
 
-class Card extends Component{
-	constructor() {
-		super();
-		this.state = {
-			time: undefined,
-			current: undefined,
-			icon: undefined,
-			date: undefined,
-			high: undefined,
-			low: undefined,
-			condition: undefined,
-		}
-	}
+// class Card extends Component{
+// 	constructor() {
+// 		super();
+// 		this.state = {
+// 			time: undefined,
+// 			current: undefined,
+// 			icon: undefined,
+// 			date: undefined,
+// 			high: undefined,
+// 			low: undefined,
+// 			condition: undefined,
+// 		}
+// 	}
 	
-	render () {
-		return(
-			<div>
+// 	render () {
+// 		return(
+// 			<div>
 				
-			</div>
-		)
+// 			</div>
+// 		)
 
-	}
-}
-// export default Card;
+// 	}
+// }
+// // export default Card;

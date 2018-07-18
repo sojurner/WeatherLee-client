@@ -4,21 +4,35 @@ import Welcome from './Welcome';
 import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import Card from './Card';
+import Key from './Key'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      userLocation: '',
+      userLocation: 'denver',
+      time: '',
+      date: '',
+      CurrentWeather: [],
+      SevenHourForecast: [],
+      TenDayForecast: []
     }
   }
 
-  // getWeather = async (city) => {
-  //   city.preventDefault()
-  //   const api_call = await fetch(`${root}${apiKey}/geolookup/conditions/hourly/forecast10day/q/${city}.json`);
-  //   const data = await api_call.json();
-  //   console.log(data)
-  // }
+
+  componentDidMount() {
+    const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${this.state.userLocation}.json`
+    fetch(url)
+      .then(response => response.json()).then(data=>
+      this.setState( {
+        userLocation: this.state.userLocation,
+      })
+      )
+      .catch(error => {
+      throw new Error(error)
+      })
+    }
+  
 
   setLocation = (location) => {
     location.preventDefault()
@@ -28,9 +42,8 @@ class App extends Component {
   render() {
     return (
       <div>
-      <ApiKey c />
-      <Welcome cityLocation={this.setLocation}/>
-      <Search getWeather={this.getWeather}/>
+      <Welcome />
+      <Search  cityLocation={this.setLocation}/>
       </div>
     )
   }
