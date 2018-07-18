@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Welcome from './Welcome';
+import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import Card from './Card';
-
-const apiKey = '881631f063e09bd3'
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      userLocation: ''
+      userLocation: '',
     }
   }
 
@@ -22,16 +21,19 @@ class App extends Component {
   // }
 
   setLocation = (location) => {
+    location.preventDefault()
     this.setState( {userLocation: location})
   }
 
   render() {
     return (
-      <div className="App">
-        <Welcome />
+      <div>
+      <Welcome cityLocation={this.setLocation}/>
+      <Search getWeather={this.getWeather}/>
       </div>
-    );
+    )
   }
+
 }
 
 export default App;

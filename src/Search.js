@@ -9,6 +9,7 @@ class Search extends Component{
 	}
 
 	updateVal = (e) => {
+		e.preventDefault()
 		this.setState({ location: e.target.value})
 		console.log(this.state.location)
 	}
@@ -19,7 +20,7 @@ class Search extends Component{
 				<input type="text" placeholder="City/ZipCode" onChange={this.updateVal} />
 				<button onClick={() => this.props.setLocation(this.state.location)}>Submit</button>
 			</form>
-			)
+		)
 	}
 	}
 
