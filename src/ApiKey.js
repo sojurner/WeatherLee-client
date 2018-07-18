@@ -1,10 +1,13 @@
-import Key from './api-key.js';
-const root = 'http://api.wunderground.com/api/';
+import React from 'react'
+import Key from './Key.js'
 
-const getApi = (city) => {
+const ApiKey = (city) => {
   return fetch(
-    `${root}${Key}/geolookup/conditions/hourly/forecast10day/q/${city}.json`)
-    .then( response => response.json() );
+    'http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${city}.json'
+    .then(response => response.json()).then(data=>console.log(data))
+  ).catch(error => {
+    throw new Error(error)
+  })
 }
 
 export default ApiKey;

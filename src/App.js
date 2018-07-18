@@ -28,6 +28,7 @@ class App extends Component {
   render() {
     return (
       <div>
+      <ApiKey c />
       <Welcome cityLocation={this.setLocation}/>
       <Search getWeather={this.getWeather}/>
       </div>
