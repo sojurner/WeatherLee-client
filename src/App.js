@@ -5,19 +5,18 @@ import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import Card from './Card';
 import Key from './Key'
-import { sevenHour } from './DataScrape';
+import { currWeather, sevenHour, tenDay } from './DataScrape';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userLocation: 'denver',
-      data: null
       // time: '',
       // date: '',
-      // CurrentWeather: [],
-      // SevenHourForecast: [],
-      // TenDayForecast: []
+      CurrentWeather: null,
+      SevenHourForecast: null,
+      TenDayForecast: null
     }
   }
 
@@ -26,9 +25,11 @@ class App extends Component {
     fetch(url)
       .then(response => response.json()).then(response => {
       this.setState({
-        data: response
+        CurrentWeather: currWeather(response),
+        SevenHourForecast: sevenHour(response),
+        TenDayForecast: tenDay(response)
       })
-      console.log(response)
+      console.log(currWeather(response))
       })
       .catch(error => {
       throw new Error(error)

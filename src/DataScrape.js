@@ -1,11 +1,12 @@
 export const currWeather = data => {
 	const currDay = data.forecast.simpleforecast.forecastday.find(currDay =>  currDay.period === 1)
 	const currDayObj = { location: data.current_observation.display_location.full, current: data.current_observation.temp_f + '°F', high: currDay.high.fahrenheit + '°F', low: currDay.low.fahrenheit + '°F', conditions: currDay.conditions, icon: currDay.icon_url}
+	return currDayObj
 }
 
 
-export const sevenHour = data => {
-	data.hourly_forecast.filter(obj => Object.values(obj)[0]).reduce((sevenHour, hour, i) => {
+export const sevenHour = response => {
+	return response.hourly_forecast.filter(obj => Object.values(obj)[0]).reduce((sevenHour, hour, i) => {
   	if(i < 8){
     	sevenHour.push({ 
     		'time': hour.FCTTIME.civil, 
@@ -20,7 +21,7 @@ export const sevenHour = data => {
 
 
 export const tenDay = data => {
-	data.forecast.simpleforecast.forecastday.map(obj => {
+	return data.forecast.simpleforecast.forecastday.map(obj => {
 	  return {
 	  	'day': obj.date.weekday, 
 	  	'date': obj.date.month +'/'+ obj.date.day + '/' + obj.date.year , 
