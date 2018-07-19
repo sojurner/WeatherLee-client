@@ -1,28 +1,51 @@
-.App {
+ .input-container {
+  background-image: url("https://i.ytimg.com/vi/2s7gG7aAjlM/maxresdefault.jpg");
+  background-repeat: no-repeat;
+  background-size: 100rem;
+
+  width: 100%;
+  height: 100vh;
+  filter: grayscale(10%);
+  /* filter: brightness(150%); */
   text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  color: pink;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.input-container {
+  display: grid;
+  grid-template-columns: 3fr 4fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.input-welcome{
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
 }
 
-.App-title {
-  font-size: 1.5em;
+.input-search {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+} 
+
+.seven-hour {
+  height: 40rem;
+  overflow: auto;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+
 }
 
-.App-intro {
-  font-size: large;
+.ten-day {
+  height: 40rem;
+  overflow: auto;
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.current-weather {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
 }

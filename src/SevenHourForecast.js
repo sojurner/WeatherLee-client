@@ -3,7 +3,9 @@ import { Card } from './Card';
 
 export const SevenHourForecast = props => {
 	return(
-		<div>
+		<div className="seven-hour">
+					<h1>7 Hour Forecast</h1>
+
 			{props.sevenHourForecast.map((hour, index) => {
 				return(
 					<Card 

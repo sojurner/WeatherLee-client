@@ -12,13 +12,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      userLocation: '',
       CurrentWeather: {},
       SevenHourForecast: [],
-      TenDayForecast: []
+      TenDayForecast: [],
+      error: false
     }
   }
 
-  getWeather() {
+  getWeather = () => {
     const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${this.state.userLocation}.json`
     fetch(url)
       .then(response => response.json()).then(response => {
@@ -26,11 +28,15 @@ class App extends Component {
           CurrentTime: currWeather(response).time,
           CurrentWeather: currWeather(response),
           SevenHourForecast: sevenHour(response),
-          TenDayForecast: tenDay(response)
+          TenDayForecast: tenDay(response),
+          error: false
         })
       })
       .catch(error => {
-      throw new Error(error)
+      // throw new Error(error)
+        this.setState({
+          error: true
+        })
       })
     }
   
@@ -39,19 +45,24 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Welcome />
-        <CurrentWeather 
-          currentWeather={this.state.CurrentWeather} 
-        />
-        <SevenHourForecast sevenHourForecast={this.state.SevenHourForecast} />
-        <TenDayForecast tenDayForecast={this.state.TenDayForecast} />
-        <Search  userLocation={this.state.userLocation} setLocation={this.setLocation}/>
-      </div>
+    if(this.state.error === true) {
+      return (
+        <div className="input-container rendered-container">
+          <Welcome />
+          <Search userLocation={this.state.userLocation} setLocation={this.setLocation}/>
+        </div>
+      )
+    } 
+      return (
+        <div className="input-container">
+          <Welcome />
+          <Search userLocation={this.state.userLocation} setLocation={this.setLocation}/>
+          <CurrentWeather currentWeather={this.state.CurrentWeather} />
+          <SevenHourForecast sevenHourForecast={this.state.SevenHourForecast} />
+          <TenDayForecast tenDayForecast={this.state.TenDayForecast} />
+        </div>
     )
   }
-
 }
 
 export default App;
