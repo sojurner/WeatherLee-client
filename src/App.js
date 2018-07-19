@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Welcome from './Welcome';
 import Search from './Search';
-import CurrentWeather from './CurrentWeather';
+import { CurrentWeather } from './CurrentWeather';
 import Key from './Key';
 import { SevenHourForecast } from './SevenHourForecast';
 import { TenDayForecast } from './TenDayForecast';
@@ -12,8 +12,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      userLocation: '',
-      CurrentTime: '',
       CurrentWeather: {},
       SevenHourForecast: [],
       TenDayForecast: []
@@ -44,6 +42,9 @@ class App extends Component {
     return (
       <div>
         <Welcome />
+        <CurrentWeather 
+          currentWeather={this.state.CurrentWeather} 
+        />
         <SevenHourForecast sevenHourForecast={this.state.SevenHourForecast} />
         <TenDayForecast tenDayForecast={this.state.TenDayForecast} />
         <Search  userLocation={this.state.userLocation} setLocation={this.setLocation}/>
