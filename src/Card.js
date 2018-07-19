@@ -1,26 +1,17 @@
-// // import React, { Component } from 'react'
+import React from 'react';
 
-// class Card extends Component{
-// 	constructor() {
-// 		super();
-// 		this.state = {
-// 			time: undefined,
-// 			current: undefined,
-// 			icon: undefined,
-// 			date: undefined,
-// 			high: undefined,
-// 			low: undefined,
-// 			condition: undefined,
-// 		}
-// 	}
-	
-// 	render () {
-// 		return(
-// 			<div>
-				
-// 			</div>
-// 		)
+export const Card = props => {
+	return (
+		<div>
+			<p>{props.time}</p>
+			<p>{props.temp}</p>
+			<p>{props.condition}</p>
+			<p>{props.icon_url}</p>
 
-// 	}
-// }
-// // export default Card;
+
+		</div>
+
+	)
+
+
+}
