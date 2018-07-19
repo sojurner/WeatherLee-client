@@ -1,16 +1,16 @@
-// import React from 'react';
+import React from 'react';
 
-// import Hour from './Hour.js';
-// import './Hourly.css';
+export const CurrentWeather = props => {
+  return (
+    <div className="current-weather">
+      <p>{props.currentWeather.time}</p>
+      <p>{props.currentWeather.location}</p>
+      <p>{props.currentWeather.high}</p>
+      <p>{props.currentWeather.low}</p>
+      <p>{props.currentWeather.conditions}</p>
+      <img src={props.currentWeather.icon} />
 
-// export default function Hourly({data}) {
-//   return (
-//     <div className="hour-container">
-//       <div className='innerContainer'>
-//         {
-			
-//         }
-//       </div>
-//     </div>
-//   );
-// }
+
+    </div>
+  );
+}

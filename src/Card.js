@@ -3,7 +3,7 @@ import React from 'react';
 export const Card = props => {
 	if(props.condition) {
 		return (
-			<div>
+			<div className="seven-hour">
 				<p>{props.time}</p>
 				<p>{props.temp}</p>
 				<p>{props.condition}</p>
@@ -14,7 +14,7 @@ export const Card = props => {
 	}
 
 	return (
-		<div>
+		<div className="ten-day">
 			<p>{props.day}</p>
 			<p>{props.date}</p>
 			<p>{props.high}</p>
