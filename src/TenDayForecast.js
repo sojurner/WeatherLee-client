@@ -3,7 +3,7 @@ import { Card } from './Card';
 
 export const TenDayForecast = props => {
   return(
-  	<div>
+  	<div className="ten-day">
   		{props.tenDayForecast.map((day, index) => {
         return (
     			<Card
