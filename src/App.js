@@ -5,50 +5,45 @@ import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import Card from './Card';
 import Key from './Key'
+import { sevenHour } from './DataScrape';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userLocation: 'denver',
-      time: '',
-      date: '',
-      CurrentWeather: [],
-      SevenHourForecast: [],
-      TenDayForecast: []
+      data: null
+      // time: '',
+      // date: '',
+      // CurrentWeather: [],
+      // SevenHourForecast: [],
+      // TenDayForecast: []
     }
   }
 
-
-  componentDidMount() {
+  getWeather() {
     const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${this.state.userLocation}.json`
     fetch(url)
-      .then(response => response.json()).then(data=>
-        this.setState( {
-          userLocation: this.state.userLocation,
-          time: this.state.time,
-          date: this.state.date,
-          currentWeather: currWeather(data),
-          sevenHour: sevenHour(data),
-          tenDay: tenDay(data)
-        })
-      )
+      .then(response => response.json()).then(response => {
+      this.setState({
+        data: response
+      })
+      console.log(response)
+      })
       .catch(error => {
-        throw new Error(error)
+      throw new Error(error)
       })
     }
   
-
-  setLocation = (location) => {
-    location.preventDefault()
-    this.setState( {userLocation: location})
+  setLocation = (search) => {
+    this.setState( {userLocation: search.location}, this.getWeather);
   }
 
   render() {
     return (
       <div>
-        <Welcome />
-        <Search  cityLocation={this.setLocation}/>
+      <Welcome />
+      <Search  userLocation={this.state.userLocation} setLocation={this.setLocation}/>
       </div>
     )
   }
