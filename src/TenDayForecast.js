@@ -1,11 +1,18 @@
-// import React, { Component } from 'react';
+import React from 'react';
 
-// export default function TenDay(props) {
-//     return ( 
-//       <div className="tenDayContainer">
-//         <div className="innerContainer">
-
-//         </div>
-//       </div>
-//     );
-//   }
+export const TenDay = props => {
+  return(
+  	<div>
+  		{props.tenDay.forEach(day => {
+  			<Card
+  				day={day.day}
+  				date={day.date}
+  				high={day.high}
+  				low={day.low}
+  				icon={day.icon}
+				/>
+			}
+  		)}
+  	</div>
+	)
+}
