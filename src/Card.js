@@ -7,7 +7,7 @@ export const Card = props => {
 				<p>{props.time}</p>
 				<p>{props.temp}</p>
 				<p>{props.condition}</p>
-				<p>{props.icon_url}</p>
+				<img src={props.icon_url} />
 			</div>
 			
 		)
@@ -19,7 +19,7 @@ export const Card = props => {
 			<p>{props.date}</p>
 			<p>{props.high}</p>
 			<p>{props.low}</p>
-			<p>{props.icon}</p>
+			<img src={props.icon} />
 		</div>
 		
 	)
