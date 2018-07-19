@@ -1,26 +1,27 @@
-// // import React, { Component } from 'react'
+import React from 'react';
 
-// class Card extends Component{
-// 	constructor() {
-// 		super();
-// 		this.state = {
-// 			time: undefined,
-// 			current: undefined,
-// 			icon: undefined,
-// 			date: undefined,
-// 			high: undefined,
-// 			low: undefined,
-// 			condition: undefined,
-// 		}
-// 	}
-	
-// 	render () {
-// 		return(
-// 			<div>
-				
-// 			</div>
-// 		)
+export const Card = props => {
+	if(props.condition) {
+		return (
+			<div>
+				<p>{props.time}</p>
+				<p>{props.temp}</p>
+				<p>{props.condition}</p>
+				<p>{props.icon_url}</p>
+			</div>
+			
+		)
+	}
 
-// 	}
-// }
-// // export default Card;
+	return (
+		<div>
+			<p>{props.day}</p>
+			<p>{props.date}</p>
+			<p>{props.high}</p>
+			<p>{props.low}</p>
+			<p>{props.icon}</p>
+		</div>
+		
+	)
+
+}
