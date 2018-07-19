@@ -4,7 +4,7 @@ class Search extends Component{
 	constructor(props) {
 		super(props);
 		this.state = {
-			location: ''
+			location: props.userLocation
 		}
 	}
 
@@ -16,10 +16,10 @@ class Search extends Component{
 
 	render() {
 		return(
-			<form>
+			<div>
 				<input type="text" placeholder="City/ZipCode" onChange={this.updateVal} />
-				<button onClick={(e) => this.props.setLocation(this.state.location)}>Submit</button>
-			</form>
+				<button onClick={(e) => this.props.setLocation(this.state)}>Submit</button>
+			</div>
 		)
 	}
 	}
