@@ -5,6 +5,7 @@ import Search from './Search';
 import CurrentWeather from './CurrentWeather';
 import Key from './Key';
 import { SevenHourForecast } from './SevenHourForecast';
+import { TenDayForecast } from './TenDayForecast';
 import { currWeather, sevenHour, tenDay } from './DataScrape';
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
       <div>
         <Welcome />
         <SevenHourForecast sevenHourForecast={this.state.SevenHourForecast} />
+        <TenDayForecast tenDayForecast={this.state.TenDayForecast} />
         <Search  userLocation={this.state.userLocation} setLocation={this.setLocation}/>
       </div>
     )
