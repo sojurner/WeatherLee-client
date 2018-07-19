@@ -24,12 +24,17 @@ class App extends Component {
     const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${this.state.userLocation}.json`
     fetch(url)
       .then(response => response.json()).then(data=>
-      this.setState( {
-        userLocation: this.state.userLocation,
-      })
+        this.setState( {
+          userLocation: this.state.userLocation,
+          time: this.state.time,
+          date: this.state.date,
+          currentWeather: currWeather(data),
+          sevenHour: sevenHour(data),
+          tenDay: tenDay(data)
+        })
       )
       .catch(error => {
-      throw new Error(error)
+        throw new Error(error)
       })
     }
   
@@ -42,8 +47,8 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Welcome />
-      <Search  cityLocation={this.setLocation}/>
+        <Welcome />
+        <Search  cityLocation={this.setLocation}/>
       </div>
     )
   }
