@@ -17,8 +17,8 @@ class Search extends Component{
   render() {
     return(
       <div className="input-search rendered-search">
-        <input type="text" placeholder="City/ZipCode" onChange={this.updateVal} />
-        <button onClick={(e) => this.props.setLocation(this.state)}>Submit</button>
+        <input className="search-box" type="text" placeholder="City/ZipCode" onChange={this.updateVal} />
+        <button className="search-button" onClick={(e) => this.props.setLocation(this.state)}>Search</button>
       </div>
     )
   }
