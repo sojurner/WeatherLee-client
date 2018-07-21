@@ -10,7 +10,8 @@ export const Card = props => {
 				<img className="seven-hour-icon" src={props.icon_url} />
 			</div>
 		)
-	} return (
+	} 
+	return (
 		<div className="ten-day-cards">
 			<p className="ten-day-day">{props.day}</p>
 			<p className="ten-day-date">{props.date}</p>
