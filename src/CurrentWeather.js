@@ -3,12 +3,12 @@ import React from 'react';
 export const CurrentWeather = props => {
   return (
     <div className="current-weather">
-      <p>{props.currentWeather.location}</p>
-      <p>{props.currentWeather.time}</p>
-      <p>{props.currentWeather.high}</p>
-      <p>{props.currentWeather.low}</p>
-      <p>{props.currentWeather.conditions}</p>
-      <img src={props.currentWeather.icon} />
+      <p className="current-location">{props.currentWeather.location}</p>
+      <p className="current-time">{props.currentWeather.time}</p>
+      <p className="current-high">{props.currentWeather.high}</p>
+      <p className="current-low">{props.currentWeather.low}</p>
+      <p className="current-conditions">{props.currentWeather.conditions}</p>
+      <img className="current-icon" src={props.currentWeather.icon} />
     </div>
   );
 }

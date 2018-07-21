@@ -10,7 +10,7 @@ export const sevenHour = response => {
   	if(i < 8){
     	sevenHour.push({ 
     		'time': hour.FCTTIME.civil, 
-    		'temp': hour.temp.english + '°F', 
+    		'temp': Math.floor(hour.temp.english) + '°F', 
     		'condition': hour.condition, 
     		'icon_url': hour.icon_url 
     	})
