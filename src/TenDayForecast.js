@@ -7,7 +7,7 @@ export const TenDayForecast = props => {
   		{props.tenDayForecast.map((day, index) => {
         return (
     			<Card
-            key={index}
+            		key={index}
     				day={day.day}
     				date={day.date}
     				high={day.high}
