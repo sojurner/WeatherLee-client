@@ -3,7 +3,7 @@ import React from 'react';
 export const Card = props => {
 	if(props.condition) {
 		return (
-			<div className="seven-day-cards">
+			<div className="seven-hour-cards">
 				<p className="seven-hour-time">{props.time}</p>
 				<p className="seven-hour-temperature">{props.temp}</p>
 				<p className="seven-hour-conditions">{props.condition}</p>
@@ -11,13 +11,12 @@ export const Card = props => {
 			</div>
 		)
 	} return (
-		<div>
-			<h1>10 Day Forecast</h1>
-			<p>{props.day}</p>
-			<p>{props.date}</p>
-			<p>High: {props.high}</p>
-			<p>Low: {props.low}</p>
-			<img src={props.icon} />
+		<div className="ten-day-cards">
+			<p className="ten-day-day">{props.day}</p>
+			<p className="ten-day-date">{props.date}</p>
+			<p className="ten-day-high">{props.high}</p>
+			<p className="ten-day-low">{props.low}</p>
+			<img className="ten-day-icon" src={props.icon} />
 		</div>
 	)
 }

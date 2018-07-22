@@ -17,11 +17,11 @@ class Search extends Component{
   render() {
     return(
       <div className="input-search rendered-search">
-        <input className="search-box" type="text" placeholder="City/ZipCode" onChange={this.updateVal} />
-        <button className="search-button" onClick={(e) => this.props.setLocation(this.state)}>Search</button>
+        <input className="search-box" type="text" placeholder="(City,State)/ZipCode" onChange={this.updateVal} />
+        <button className="search-button" onClick={(e) => this.props.setLocation(this.state.location)}>Search</button>
       </div>
     )
   }
 }
 
-    export default Search;
+export default Search;

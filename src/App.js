@@ -39,9 +39,9 @@ class App extends Component {
         })
       })
     }
-  
+
   setLocation = (search) => {
-    this.setState( {userLocation: search.location}, this.getWeather);
+    this.setState( { userLocation: search }, this.getWeather);
   }
 
   render() {
