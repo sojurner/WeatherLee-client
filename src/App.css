@@ -1,5 +1,5 @@
  .input-container {
-  background-image: url(https://i.imgur.com/NAQ0dTR.png);
+  background-image: url(https://hdqwalls.com/wallpapers/firewatch-sd.jpg);
   background-repeat: no-repeat;
   background-size: 120rem;
   width: 100%;
@@ -12,7 +12,6 @@
   align-items: center;
   color: rgb(125, 50, 10);
 }
-
 
 @font-face {
   font-family: xtreeme;
@@ -39,6 +38,11 @@
   src: url(fonts/ChildishKid.ttf)
 }
 
+@font-face {
+  font-family: beat;
+  src: url(fonts/beat.ttf)
+}
+
 .input-container {
   display: grid;
   grid-template-columns: repeat(15, 1fr);
@@ -52,7 +56,7 @@
 
 .input-welcome {
   margin-top: 5rem;
-  color: #356D8A;
+  color: rgb(136, 90, 123);
   font-family: xtreeme;
   font-size: 5rem;
   display: inline-block;
@@ -86,8 +90,8 @@
 } 
 
 .seven-hour {
-  color: #8D8C99;
-  font-family: childish;
+  color: rgb(208, 80, 11);
+  font-family: beat;
   font-size: 1.5rem;
   height: 40rem;
   overflow: auto;
@@ -97,7 +101,7 @@
 
 .current-weather {
   font-size: 2rem;
-  font-family: childish;
+  font-family: beat;
   grid-column: 7 / 10;
   grid-row: 2 / 4;
   transition: 1s;
@@ -232,7 +236,7 @@
 }
 
 .search-button {
-  font-family: childish;
+  font-family: beat;
   font-size: 1.7rem;
   height: 4rem;
   width: 9rem;
@@ -254,7 +258,7 @@ input::placeholder {
 }
 
 input[type="text"] {
-  font-family: hughes;
+  font-family: beat;
   font-size: 2rem;
 
   padding-left: 1rem;
