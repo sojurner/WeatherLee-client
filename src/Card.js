@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const Card = props => {
-	if(props.condition) {
+	if(!props.condition) {
 		return (
 			<div className="seven-hour-cards">
 				<p className="seven-hour-time">{props.time}</p>
