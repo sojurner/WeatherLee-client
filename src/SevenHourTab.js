@@ -12,7 +12,7 @@ export class SevenHourTab extends Component{
 
 	render() {
 		return(
-			<div>
+			<div className="seven-hour-button">
 				<button className="seven-hour-button" onClick={
 					e => this.props.changeWeatherClicked(this.state.currentWeather, this.state.sevenHourClicked, this.state.tenDayClicked )}>Seven Hour</button>
 				</div>

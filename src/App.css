@@ -50,7 +50,7 @@
 }
 
 .welcome-title {
-  grid-column: 1 / 16;
+  grid-column: 6 / 11;
   grid-row: 1 / 2;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .input-search {
-  grid-column: 8 / 9;
+  grid-column: 6 / 11;
   grid-row: 2 / 3;
   align-self: start;
   margin-top: 2rem;
@@ -247,6 +247,49 @@
   margin-left: .5rem;
 }
 
+.current-weather-button, .seven-hour-button, .ten-day-button {
+   grid-row: 2 / 3;
+   height: 3rem;
+   border-radius: 0.5rem;
+   font-size: 1.2rem;
+   width: 8rem;
+   background-color: #6a8dc6;
+
+}
+
+.current-weather-button:hover, .seven-hour-button:hover, .ten-day-button:hover {
+animation: hueChange 4s linear infinite;
+  background-color: rgb(74, 96, 125);
+  color: white;
+  cursor: pointer;
+  box-shadow: 1.5px 1.5px 1.5px 1.5px #6a8dc6;
+}
+
+@keyframes hueChange {
+  0% {
+    filter: hue-rotate(-90deg);
+  }
+  50% {
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    filter: hue-rotate(-90deg);
+  }
+
+}
+
+.current-weather-button {
+  grid-column: 7 / 8;
+}
+
+.seven-hour-button {
+  grid-column: 8 / 9;
+}
+
+.ten-day-button {
+  grid-column: 9 / 10;
+}
+
 /* .search-button:hover {
   color: black;
   background-color: #DDCECD;
@@ -268,6 +311,9 @@ input[type="text"] {
 .search-box {
   margin-right: .5rem;
   border-radius: 10px;
+}
+.rendered-search {
+  grid-column: 10 / 15
 }
 
 .current-high {

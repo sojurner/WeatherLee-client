@@ -12,7 +12,7 @@ export class TenDayTab extends Component{
 
     render() {
         return(
-            <div>
+            <div className="ten-day-button">
                 <button className="ten-day-button" onClick={
                     (e) => this.props.changeWeatherClicked(
                         this.state.currentWeather, 
