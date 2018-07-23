@@ -62,6 +62,15 @@
   display: inline-block;
 }
 
+.welcome-rendered-title {
+  grid-column: 4 / 7; 
+  margin-top: 1rem;
+  color: rgb(136, 90, 123);
+  font-family: xtreeme;
+  font-size: 3.5rem;
+  display: inline-block;
+}
+
 .seven-hour-title {
   margin-left: 12rem;
   margin-top: 7rem;
@@ -89,16 +98,6 @@
   justify-content: space-around;
 } 
 
-.seven-hour {
-  color: rgb(208, 80, 11);
-  font-family: beat;
-  font-size: 1.5rem;
-  height: 40rem;
-  overflow: auto;
-  grid-column: 2 / 7;
-  grid-row: 2 / 3;
-}
-
 .current-weather {
   font-size: 2rem;
   font-family: beat;
@@ -124,15 +123,29 @@
   }
 }
 
+.seven-hour {
+ font-family: childish;
+   height: 11rem;
+   overflow: auto;
+   grid-column: 2 / 15;
+   grid-row: 3 / 4;
+   display: grid;
+   grid-template-columns: repeat(10, 1fr);
+   align-self: start;
+}
+
 .seven-hour-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  height: 8rem;
-  transition: 1s ease;
-  border-radius: 1rem;
-  background: rgba(179, 186, 238, 0.5);
-  margin: 1rem 0;
+    height: 11rem;
+   width: 14rem;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 5rem 5rem;
+   -webkit-transition: 1s ease;
+   -o-transition: 1s ease;
+   transition: 1s ease;
+   border-radius: 1rem;
+   background: rgba(179, 186, 238, 0.53);
+   margin: 0 0.5rem;
 }
 
 .seven-hour-cards:hover {
@@ -146,56 +159,65 @@
 }
 
 .seven-hour-time{
-  font-size: 1.5rem;
-  grid-column: 1 / 3;
-  grid-row: 1 / 2;
-  padding: .5rem;
-  margin-top: 1rem;
+ font-size: 1.5rem;
+   grid-column: 2 / 4;
+   grid-row: 1 / 2;
+   padding: .5rem;
+   margin-top: 1rem;
 }
 
 .seven-hour-temperature {
-  font-size: 2.5rem;
-  grid-column: 3 / 5;
-  grid-row: 1 / 3;
-  margin-top: 1rem;
-  color: #EF6A04;
-  justify-self: left;
-  align-self: center;
+   font-size: 2.9rem;
+   grid-column: 2 / 4;
+   grid-row: 1 / 3;
+   margin-top: 1rem;
+   color: #EF6A04;
+   align-self: center;
+   justify-self: center;
+   justify-items: center;
 
 }
 
 .seven-hour-conditions {
-  grid-column: 1 / 3;
-  grid-row: 2 / 3;
-  padding-top: 1rem;
+font-size: 2rem;
+   grid-column: 2 / 4;
+   grid-row: 2 / 4;
+   /* padding-top: 1rem; */
+   /* justify-self: unset; */
+   align-self: end;
 }
 
 .seven-hour-icon {
-  height: 3rem;
-  grid-column: 4 / 5;
-  grid-row: 1/ 3;
-  justify-self: center;
-  align-self: right;
+   height: 3rem;
+   grid-column: 4 / 5;
+   grid-row: 1/ 3;
+   justify-self: center;
+   -ms-flex-item-align: right;
+   align-self: right;
 }
 
 .ten-day {
-  font-family: childish;
-  height: 40rem;
-  overflow: auto;
-  grid-column: 10 / 15;
-  grid-row: 2 / 3;
-  display: grid;
-  grid-template-rows: repeat(10, 1fr);
+  font-family: childish;     
+  height: 12rem;     
+  overflow: auto;     
+  grid-column: 2 / 15;     
+  grid-row: 3 / 4;     
+  display: grid;     
+  grid-template-columns: repeat(10, 1fr);    
+  align-self: start;
 }
 
 .ten-day-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 5rem 5rem;
-  transition: 1s ease;
-  border-radius: 1rem;
-  background: rgba(179, 186, 238, 0.53);
-  margin: .5rem 0;
+      width: 18rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 5rem 5rem;
+    -webkit-transition: 1s ease;
+    -o-transition: 1s ease;
+    transition: 1s ease;
+    border-radius: 1rem;
+    background: rgba(179, 186, 238, 0.53);
+    margin: 0 0.5rem;
 }
 
 .ten-day-cards:hover {
@@ -235,7 +257,7 @@
   align-self: center;
 }
 
-.search-button {
+.search-button, .search-button-two {
   font-family: beat;
   font-size: 1.7rem;
   height: 4rem;
@@ -257,12 +279,28 @@
 
 }
 
-.current-weather-button:hover, .seven-hour-button:hover, .ten-day-button:hover {
+.current-weather-button:hover {
 animation: hueChange 4s linear infinite;
   background-color: rgb(74, 96, 125);
   color: white;
   cursor: pointer;
-  box-shadow: 1.5px 1.5px 1.5px 1.5px #6a8dc6;
+  box-shadow: 1px 1px 1px 1px #6a8dc6;
+}
+
+.seven-hour-button:hover {
+animation: hueChange 4s linear infinite;
+  background-color: rgb(74, 96, 125);
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #6a8dc6;
+
+}
+.ten-day-button:hover {
+animation: hueChange 4s linear infinite;
+  background-color: rgb(74, 96, 125);
+  color: white;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 1px #6a8dc6;
 }
 
 @keyframes hueChange {
@@ -290,6 +328,63 @@ animation: hueChange 4s linear infinite;
   grid-column: 9 / 10;
 }
 
+.current-weather-button, .seven-hour-button, .ten-day-button {
+  align-self: start;
+  margin: 0 1rem;
+}
+
+.current-location {
+  position: relative;
+  bottom: 0rem;
+  font-size: 3rem;
+  color: yellow;
+  right: 33rem
+}
+
+.current-time {
+  position: relative;
+  bottom: 1rem;
+  font-size: 1.3rem;
+  left: 3.2rem;
+}
+
+.current-temp {
+  position: relative;
+  bottom: 5rem;
+  left: 4rem;
+  font-size: 6rem;
+}
+
+.current-high {
+  font-size: 2.5rem;
+  display: inline-block;
+  color: red; 
+  position: relative;
+  bottom: 20rem;
+  right: 33rem;
+}
+
+.current-low {
+  font-size: 2.5rem;
+  display: inline-block;
+  color: aqua;
+  position: relative;
+  bottom: 20rem;
+  left: 33rem;
+}
+
+.current-conditions {
+  position: relative;
+  bottom: 20rem;
+}
+
+.current-icon {
+  position: relative;
+  left: 6rem;
+  bottom: 25rem;
+  height: 4rem;
+}
+
 /* .search-button:hover {
   color: black;
   background-color: #DDCECD;
@@ -298,37 +393,32 @@ animation: hueChange 4s linear infinite;
 input::placeholder {
   padding: 0;
   line-height: 3rem;
+  color: white;
+  opacity: 0.3;
 }
 
 input[type="text"] {
   font-family: beat;
   font-size: 2rem;
-
+  color: white;
   padding-left: 1rem;
   line-height: 3rem;
 }
 
-.search-box {
+.search-box, .search-box-two {
+  background: #88ACC1;
   margin-right: .5rem;
   border-radius: 10px;
 }
+
 .rendered-search {
-  grid-column: 10 / 15
+  grid-column: 9 / 14;
+  grid-row: 1 / 2;
+  align-self: center;
+  margin-top: 2rem;
 }
 
-.current-high {
-  font-size: 2.5rem;
-  display: inline-block;
-  color: red; 
-  margin-right: 1rem; 
-}
 
-.current-low {
-  font-size: 2.5rem;
-  display: inline-block;
-  color: aqua;
-  margin-left: 1rem;
-}
 
-.current-conditions {}
+
 
