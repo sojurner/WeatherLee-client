@@ -36,7 +36,8 @@ class Search extends Component{
           <section className="suggest-list">
             <ul>
               {this.state.suggestedLocations.map((location, i) => {
-                if(i < 4 && this.state.location.length > 2) {
+                let parsedState = parseInt(this.state.location)
+                if(i < 4 && this.state.location.length > 2 && typeof parsedLocation === 'string') {
                   return (
                     <li key={i} onClick={(e) => {
                       this.setState({selectedCity: {location}}); 

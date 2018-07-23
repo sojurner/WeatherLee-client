@@ -84,7 +84,7 @@ class App extends Component {
         <Search searched={this.state.searched} userLocation={this.state.userLocation} setLocation={this.setLocation} /> 
         {this.state.searched && <CurrentWeatherTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {this.state.searched && <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />}
-        {this.state.searched &&<TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
+        {this.state.searched && <TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {this.state.currentWeatherClicked && <CurrentWeather currentWeather={this.state.currentWeather} /> }
         {this.state.sevenHourClicked && <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />}
         {this.state.tenDayClicked && <TenDayForecast tenDayForecast={this.state.tenDayForecast} /> }
