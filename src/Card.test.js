@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 
 import { Card } from './Card'
 
-
 describe('Card', () =>{
     let sevenHourWrapper;
     let tenDayWrapper;
