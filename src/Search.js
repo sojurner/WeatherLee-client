@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import CityStateData from './Algorithms/CityStateData';
 import Trie from './Algorithms/Trie';
-// let inputBox = document.querySelector('.search-box')
-
 
 class Search extends Component{
   constructor(props) {
@@ -21,7 +19,6 @@ class Search extends Component{
   }
 
   showSuggestions() {
-
     if (!this.state.location) {
       this.setState({suggestedLocations: []});
     } else {
@@ -42,27 +39,26 @@ class Search extends Component{
                 if(i < 4 && this.state.location.length > 2) {
                   return (
                     <li key={i} onClick={(e) => {
-                      this.setState({selectedCity: {location}}); this.props.setLocation(this.state.selectedCity)}}
-                    >
-                      {location}
+                      this.setState({selectedCity: {location}}); 
+                      this.props.setLocation(this.state.selectedCity)}}>{location}
                     </li>
                   )
                 }
               })}
-
             </ul>
           </section>
         </div>
       )
+    }
+    return( 
+      <div className="input-search rendered-search">
+        <input className="search-box-two" type="text" placeholder="(City,State)/ZipCode" onChange={this.updateVal} />
+        <button className="search-button-two" onClick={(e) => 
+          this.props.setLocation(this.state.location)}>Search
+        </button>  
+      </div>
+    )
   }
-  return( 
-    <div className="input-search rendered-search">
-          <input className="search-box-two" type="text" placeholder="(City,State)/ZipCode" onChange={this.updateVal} />
-          <button className="search-button-two" onClick={(e) => this.props.setLocation(this.state.location)}>Search</button>
-          
-    </div>
-  )
-}
 }
 
 export default Search;

@@ -45,7 +45,7 @@ class App extends Component {
           searched: true,
           error: false
         })
-      return this.state
+        return this.state
       })
       .catch(error => {
       // throw new Error(error)
