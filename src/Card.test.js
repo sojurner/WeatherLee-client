@@ -40,7 +40,6 @@ describe('Card', () =>{
             high={tenDayData.low}
             icon={tenDayData.icon}
         />)
-        
     })
 
     it('should exist', () => {
@@ -49,7 +48,7 @@ describe('Card', () =>{
     })
 
     it('should create seven hour and ten day cards', () => {
-        expect(sevenHourWrapper.find('p').length).toEqual(4)
-        expect(tenDayWrapper.find('p').length).toEqual(3)
+        expect(sevenHourWrapper.find('p').length).toEqual(3)
+        expect(tenDayWrapper.find('p').length).toEqual(4)
     })
 })
