@@ -19,6 +19,11 @@
 }
 
 @font-face {
+  font-family: daybreak;
+  src: url(fonts/Daybreak.otf);
+}
+
+@font-face {
   font-family: somesss;
   src: url(fonts/SOMESSS_.TTF);
 }
@@ -57,7 +62,7 @@
 .input-welcome {
   margin-top: 5rem;
   color: rgb(136, 90, 123);
-  font-family: xtreeme;
+  font-family: daybreak;
   font-size: 5rem;
   display: inline-block;
 }
@@ -66,7 +71,7 @@
   grid-column: 4 / 7; 
   margin-top: 1rem;
   color: rgb(136, 90, 123);
-  font-family: xtreeme;
+  font-family: daybreak;
   font-size: 3.5rem;
   display: inline-block;
 }
