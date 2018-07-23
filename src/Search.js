@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CityStateData from './Algorithms/CityStateData';
-import Trie from './Algorithms/Trie';
+const { Trie } = require('@sojurner/complete-me/lib');
 
 class Search extends Component{
   constructor(props) {
