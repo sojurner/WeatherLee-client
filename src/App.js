@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Welcome from './Welcome';
+import WelcomeRendered from './WelcomeRendered';
 import Search from './Search';
 import Key from './Key';
 import { CurrentWeatherTab } from './CurrentWeatherTab'
@@ -70,7 +71,7 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.error === true) {
+    if(this.state.searched === false) {
       return (
         <div className="input-container rendered-container">
           <Welcome />
@@ -80,12 +81,12 @@ class App extends Component {
     } 
     return (
       <div className="input-container">
-        <Welcome />
+        <WelcomeRendered />
         <Search searched={this.state.searched} userLocation={this.state.userLocation} setLocation={this.setLocation} /> 
         {this.state.searched && <CurrentWeatherTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {this.state.searched && <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />}
         {this.state.searched && <TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
-        {this.state.currentWeatherClicked && <CurrentWeather currentWeather={this.state.currentWeather} /> }
+        <CurrentWeather currentWeather={this.state.currentWeather} /> 
         {this.state.sevenHourClicked && <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />}
         {this.state.tenDayClicked && <TenDayForecast tenDayForecast={this.state.tenDayForecast} /> }
       </div>
