@@ -17,7 +17,7 @@ export class CurrentWeatherTab extends Component{
 					(e) => this.props.changeWeatherClicked(
 					this.state.currentWeather, 
 					this.state.sevenHourClicked,
-					this.state.tenDayClicked)}>Current
+					this.state.tenDayClicked)}>Clear
 				</button>
 			</div>
 		)
