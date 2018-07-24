@@ -35,9 +35,9 @@ class Search extends Component{
             {this.props.setLocation(this.state.location)}}>Search</button>
           <section className="suggest-list">
             {this.state.suggestedLocations.map((location, i) => {
-              if(i < 3 && this.state.location.length > 2) {
+              if(i < 3 && this.state.location.length > 3) {
                 return (
-                  <p className="suggestions" key={i} onClick={(e) => {
+                  <p className="suggestions-two" key={i} onClick={(e) => {
                     this.props.setLocation(e.target.textContent)
                     this.setState({suggestedLocations: []})}}>{location}
                   </p>
@@ -51,16 +51,16 @@ class Search extends Component{
     }
     return( 
       <div className="input-search rendered-search">
-        <input className="search-box-two" type="text" placeholder="City / ZipCode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
+        <input className="search-box-two" type="text" placeholder=" Enter city / zipCode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
         <button className="search-button-two" onClick={(e) => 
           this.props.setLocation(this.state.location)}>Search
         </button> 
         <section className="suggest-list-two">
             {this.state.suggestedLocations.map((location, i) => {
               let parsedState = parseInt(this.state.location)
-              if(i < 4 && this.state.location.length > 2) {
+              if(i < 3 && this.state.location.length > 3) {
                 return (
-                  <p className="suggestions" key={i} value={location} onClick={(e) => {
+                  <p className="suggestions" key={i} onClick={(e) => {
                     this.props.setLocation(e.target.textContent);
                     this.setState({suggestedLocations: []})}}>{location}
                   </p>
