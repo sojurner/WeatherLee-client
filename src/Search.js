@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Search.css';
+
 import CityStateData from './Algorithms/CityStateData';
 const { Trie } = require('@sojurner/complete-me/lib');
 
@@ -30,14 +32,14 @@ class Search extends Component{
     if (!this.props.searched) {
       return(
         <div className="input-search">
-          <input className="search-box" type="text" placeholder=" City/ZipCode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
+          <input className="search-box" type="text" placeholder=" Enter city / zipcode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
           <button className="search-button" onClick={(e) => 
             {this.props.setLocation(this.state.location)}}>Search</button>
-          <section className="suggest-list">
+          <section className="input-suggest-list">
             {this.state.suggestedLocations.map((location, i) => {
               if(i < 3 && this.state.location.length > 3) {
                 return (
-                  <p className="suggestions-two" key={i} onClick={(e) => {
+                  <p className="input-suggestions" key={i} onClick={(e) => {
                     this.props.setLocation(e.target.textContent)
                     this.setState({suggestedLocations: []})}}>{location}
                   </p>
@@ -50,17 +52,17 @@ class Search extends Component{
       )
     }
     return( 
-      <div className="input-search rendered-search">
-        <input className="search-box-two" type="text" placeholder=" Enter city / zipCode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
-        <button className="search-button-two" onClick={(e) => 
+      <div className="rendered-search">
+        <input className="rendered-search-box" type="text" placeholder=" Enter city / zipcode" onChange={(e) => { this.updateVal(e); this.showSuggestions(e) } } />
+        <button className="rendered-search-button" onClick={(e) => 
           this.props.setLocation(this.state.location)}>Search
         </button> 
-        <section className="suggest-list-two">
+        <section className="rendered-suggest-list-two">
             {this.state.suggestedLocations.map((location, i) => {
               let parsedState = parseInt(this.state.location)
               if(i < 3 && this.state.location.length > 3) {
                 return (
-                  <p className="suggestions" key={i} onClick={(e) => {
+                  <p className="rendered-suggestions" key={i} onClick={(e) => {
                     this.props.setLocation(e.target.textContent);
                     this.setState({suggestedLocations: []})}}>{location}
                   </p>

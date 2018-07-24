@@ -1,0 +1,35 @@
+.seven-hour-button {
+  grid-column: 6 / 8;
+ 	font-family: daybold; 
+  grid-row: 2 / 4;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  width: 8rem;
+  background-color: #6a8dc6;
+  align-self: center;
+  margin-bottom: 1rem;
+  padding-top: .2rem;
+  justify-self: center;
+}
+
+.seven-hour-button:hover {
+  animation: hueChange 4s linear infinite;
+  background-color: rgb(74, 96, 125);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 2rem #6a8dc6;
+}
+
+@keyframes hueChange {
+  0% {
+    filter: hue-rotate(-90deg);
+  }
+  50% {
+    filter: hue-rotate(90deg);
+  }
+  100% {
+    filter: hue-rotate(-90deg);
+  }
+
+}

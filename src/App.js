@@ -90,7 +90,6 @@ class App extends Component {
         {this.state.searched && <div className="current current-low">↓ {this.state.currentWeather.low} </div> }
         {this.state.searched && <div className="current current-conditions"> {this.state.currentWeather.conditions} </div> }
         {this.state.searched && <img className="current current-icon" src={this.state.currentWeather.icon} /> }
-        {this.state.searched && <CurrentWeatherTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {this.state.searched && <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />}
         {this.state.searched && <TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {/* <CurrentWeather currentWeather={this.state.currentWeather} />  */}
