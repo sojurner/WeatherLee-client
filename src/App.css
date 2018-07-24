@@ -19,6 +19,11 @@
 }
 
 @font-face {
+  font-family: daybold;
+  src: url(fonts/Daybold.otf);
+}
+
+@font-face {
   font-family: daybreak;
   src: url(fonts/Daybreak.otf);
 }
@@ -60,7 +65,7 @@
 }
 
 .input-welcome {
-  margin-top: 5rem;
+
   color: rgb(136, 90, 123);
   font-family: daybreak;
   font-size: 5rem;
@@ -68,9 +73,10 @@
 }
 
 .welcome-rendered-title {
-  grid-column: 4 / 7; 
-  margin-top: 1rem;
-  color: rgb(136, 90, 123);
+  font-weight: 1000;
+  grid-column: 6 / 11; 
+  margin-top: 5rem;
+  color: rgb(186, 155, 177);
   font-family: daybreak;
   font-size: 3.5rem;
   display: inline-block;
@@ -105,7 +111,7 @@
 
 .current-weather {
   font-size: 2rem;
-  font-family: beat;
+  font-family: daybold;
   grid-column: 7 / 10;
   grid-row: 2 / 4;
   transition: 1s;
@@ -129,7 +135,7 @@
 }
 
 .seven-hour {
- font-family: childish;
+ font-family: daybold;
    height: 11rem;
    overflow: auto;
    grid-column: 2 / 15;
@@ -202,7 +208,7 @@ font-size: 2rem;
 }
 
 .ten-day {
-  font-family: childish;     
+  font-family: daybold;     
   height: 12rem;     
   overflow: auto;     
   grid-column: 2 / 15;     
@@ -213,7 +219,7 @@ font-size: 2rem;
 }
 
 .ten-day-cards {
-      width: 18rem;
+    width: 18rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 5rem 5rem;
@@ -230,7 +236,7 @@ font-size: 2rem;
 }
 
 .ten-day-day {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 }
@@ -265,7 +271,7 @@ font-size: 2rem;
 .search-button, .search-button-two {
   font-family: beat;
   font-size: 1.7rem;
-  height: 4rem;
+  height: 3rem;
   width: 9rem;
   border-radius: 1rem;
   cursor: pointer;
@@ -275,13 +281,16 @@ font-size: 2rem;
 }
 
 .current-weather-button, .seven-hour-button, .ten-day-button {
-   grid-row: 2 / 3;
-   height: 3rem;
+  font-family: daybold; 
+  grid-row: 2 / 3;
+   height: 2rem;
    border-radius: 0.5rem;
-   font-size: 1.2rem;
+   font-size: 1.5rem;
    width: 8rem;
    background-color: #6a8dc6;
-
+    align-self: end;
+    margin-bottom: 1rem;
+    padding-top: .2rem
 }
 
 .current-weather-button:hover {
@@ -322,25 +331,20 @@ animation: hueChange 4s linear infinite;
 }
 
 .current-weather-button {
-  grid-column: 7 / 8;
+  grid-column: 6 / 8;
 }
 
 .seven-hour-button {
-  grid-column: 8 / 9;
+  grid-column: 2 / 4;
 }
 
 .ten-day-button {
-  grid-column: 9 / 10;
-}
-
-.current-weather-button, .seven-hour-button, .ten-day-button {
-  align-self: start;
-  margin: 0 1rem;
+  grid-column: 4 / 6;
 }
 
 .current-location {
   position: relative;
-  bottom: 0rem;
+  bottom: 11.5rem;
   font-size: 3rem;
   color: yellow;
   right: 33rem
@@ -348,15 +352,14 @@ animation: hueChange 4s linear infinite;
 
 .current-time {
   position: relative;
-  bottom: 1rem;
+  bottom: 19.5rem;
   font-size: 1.3rem;
-  left: 3.2rem;
+  right: 4rem;
 }
 
 .current-temp {
   position: relative;
-  bottom: 5rem;
-  left: 4rem;
+  bottom: 12rem;
   font-size: 6rem;
 }
 
@@ -365,7 +368,7 @@ animation: hueChange 4s linear infinite;
   display: inline-block;
   color: red; 
   position: relative;
-  bottom: 20rem;
+  bottom: 28rem;
   right: 33rem;
 }
 
@@ -374,19 +377,20 @@ animation: hueChange 4s linear infinite;
   display: inline-block;
   color: aqua;
   position: relative;
-  bottom: 20rem;
+  bottom: 28rem;
   left: 33rem;
 }
 
 .current-conditions {
   position: relative;
-  bottom: 20rem;
+  bottom: 27rem;
+  right: 4rem;
 }
 
 .current-icon {
   position: relative;
-  left: 6rem;
-  bottom: 25rem;
+  left: 3rem;
+  bottom: 32.3rem;
   height: 4rem;
 }
 
@@ -405,7 +409,7 @@ input::placeholder {
 input[type="text"] {
   font-family: beat;
   font-size: 2rem;
-  color: white;
+  color: gray;
   padding-left: 1rem;
   line-height: 3rem;
 }
@@ -414,12 +418,12 @@ input[type="text"] {
   background: #88ACC1;
   margin-right: .5rem;
   border-radius: 10px;
+  height: 2.7rem;
 }
 
 .rendered-search {
-  grid-column: 9 / 14;
-  grid-row: 1 / 2;
-  align-self: center;
+  grid-column: 12 / 14;
+  grid-row: 1 / 1; 
   margin-top: 2rem;
 }
 
