@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './TenDayTab.css'
 
 export class TenDayTab extends Component{
     constructor(props) {

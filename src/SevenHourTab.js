@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './SevenHourTab.css'
 
 export class SevenHourTab extends Component{
 	constructor(props) {
