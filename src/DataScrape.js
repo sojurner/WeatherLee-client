@@ -12,7 +12,6 @@ export const currWeather = data => {
 	return currDayObj
 }
 
-
 export const sevenHour = response => {
 	return response.hourly_forecast.filter(obj => Object.values(obj)).reduce((sevenHour, hour, i) => {  
 		if(i < 8){

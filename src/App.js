@@ -83,10 +83,17 @@ class App extends Component {
       <div className="input-container">
         <WelcomeRendered />
         <Search searched={this.state.searched} userLocation={this.state.userLocation} setLocation={this.setLocation} /> 
+        {this.state.searched && <div className="current current-location"> {this.state.currentWeather.location} </div> }
+        {this.state.searched && <div className="current current-time"> {this.state.currentWeather.time} </div> }
+        {this.state.searched && <div className="current current-temp"> {this.state.currentWeather.current} </div> }
+        {this.state.searched && <div className="current current-high">↑ {this.state.currentWeather.high} </div> }
+        {this.state.searched && <div className="current current-low">↓ {this.state.currentWeather.low} </div> }
+        {this.state.searched && <div className="current current-conditions"> {this.state.currentWeather.conditions} </div> }
+        {this.state.searched && <img className="current current-icon" src={this.state.currentWeather.icon} /> }
         {this.state.searched && <CurrentWeatherTab changeWeatherClicked={this.changeWeatherClicked} /> }
         {this.state.searched && <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />}
         {this.state.searched && <TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
-        <CurrentWeather currentWeather={this.state.currentWeather} /> 
+        {/* <CurrentWeather currentWeather={this.state.currentWeather} />  */}
         {this.state.sevenHourClicked && <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />}
         {this.state.tenDayClicked && <TenDayForecast tenDayForecast={this.state.tenDayForecast} /> }
       </div>

@@ -38,6 +38,4 @@ describe('Search component', ()=> {
 
         expect(mockCallBack).toHaveBeenCalled()
     })
-
-    
 })
