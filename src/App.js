@@ -30,14 +30,15 @@ class App extends Component {
   
   componentDidMount = () => {
     if(localStorage.getItem('Location')) {
-      this.getWeather(JSON.parse(localStorage.getItem('Location')))
+      this.getWeather(localStorage.getItem('Location'))
     }
   }
 
   getWeather = search => {
     const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${search}.json`
     fetch(url)
-      .then(response => response.json()).then(response => {
+      .then(data => {return data.json()})
+      .then(response => {
         this.setState({
           currentTime: currWeather(response).time,
           currentWeather: currWeather(response),
@@ -46,15 +47,15 @@ class App extends Component {
           searched: true,
           error: false
         })
-        return this.state
       })
       .catch(error => {
+        alert('Location does not exist...')
       // throw new Error(error)
-        this.setState({
-          error: true
-        })
+        // this.setState({
+        //   error: true
+        // })
       })
-      localStorage.setItem('Location', JSON.stringify(search))
+      localStorage.setItem('Location', search)
     }
 
   setLocation = search => {
