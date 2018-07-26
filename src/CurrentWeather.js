@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const CurrentWeather = props => {
   return (
@@ -12,4 +12,4 @@ export const CurrentWeather = props => {
       <img className="current-icon" src={props.currentWeather.icon} />
     </div>
   );
-}
+};
