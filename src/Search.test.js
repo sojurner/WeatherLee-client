@@ -30,12 +30,14 @@ describe('Search component', ()=> {
 
     it('should track event of button click', () => {
         const mockCallBack = jest.fn();
-        let wrapperThree = shallow(<App setLocation={ () =>  mockCallBack() } />)
+
         let wrapperTwo = shallow(< Search setLocation={ () => mockCallBack() } />)
+        let inputValue = wrapperTwo.find('input')
+        console.log(inputValue)
         let searchButton = wrapperTwo.find('button');
 
         searchButton.simulate('click');
-
+    
         expect(mockCallBack).toHaveBeenCalled()
     })
 })

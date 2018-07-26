@@ -4,10 +4,8 @@ import Welcome from './Welcome';
 import WelcomeRendered from './WelcomeRendered';
 import Search from './Search';
 import Key from './Key';
-import { CurrentWeatherTab } from './CurrentWeatherTab'
 import { SevenHourTab } from './SevenHourTab'
 import { TenDayTab } from './TenDayTab'
-import { CurrentWeather } from './CurrentWeather';
 import { SevenHourForecast } from './SevenHourForecast';
 import { TenDayForecast } from './TenDayForecast';
 import { currWeather, sevenHour, tenDay } from './DataScrape';
@@ -49,18 +47,13 @@ class App extends Component {
         })
       })
       .catch(error => {
-        alert('Location does not exist...')
-      // throw new Error(error)
-        // this.setState({
-        //   error: true
-        // })
       })
       localStorage.setItem('Location', search)
     }
 
   setLocation = search => {
     this.setState( { userLocation: search })
-    this.getWeather(search);
+    this.getWeather(search)
   }
 
   changeWeatherClicked = (current, seven, ten) => {
@@ -93,7 +86,6 @@ class App extends Component {
         {this.state.searched && <img className="current current-icon" src={this.state.currentWeather.icon} /> }
         {this.state.searched && <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />}
         {this.state.searched && <TenDayTab changeWeatherClicked={this.changeWeatherClicked} /> }
-        {/* <CurrentWeather currentWeather={this.state.currentWeather} />  */}
         {this.state.sevenHourClicked && <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />}
         {this.state.tenDayClicked && <TenDayForecast tenDayForecast={this.state.tenDayForecast} /> }
       </div>
