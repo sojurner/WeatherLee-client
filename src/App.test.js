@@ -15,7 +15,7 @@ describe('App', () => {
       localStorage.clear();
       localStorage.setItem('Location', 'denver, co' )
       renderedShallowWrapper = shallow(<App />);
-      renderedShallowWrapper.setState({searched: true, userLocation: 'denver, co', sevenHourClicked: true})
+      renderedShallowWrapper.setState({searched: true, userLocation: 'denver, co'})
       unrenderedShallowWrapper = shallow(<App />);
       mountWrapper = mount(<App />)
     })
@@ -57,20 +57,20 @@ describe('App', () => {
     })
 
     it('shall render Welcome, Search, SevenHourTab and TenDayTab', () => {
+
       expect(renderedShallowWrapper.find('div').length).toEqual(7)
       expect(renderedShallowWrapper.find('SevenHourTab').length).toEqual(1)
       expect(renderedShallowWrapper.find('TenDayTab').length).toEqual(1)
       expect(renderedShallowWrapper.find('Search').length).toEqual(1)
     })
 
-    it('shall render SevenHourForecast and TenDayForecast on click', () => {
+    it.skip('shall render SevenHourForecast and TenDayForecast on click', () => {
       expect(renderedShallowWrapper.find('SevenHourForecast').length).toEqual(0)
-      renderedShallowWrapper.instance().changeWeatherClicked(false, true, false)
-      let otherWrapper = renderedShallowWrapper.instance().render()
-      console.log(otherWrapper.props.children)
-      // expect(.find('SevenHourForecast').length).toEqual(1)
+      renderedShallowWrapper.instance().changeWeatherClicked(true, true, true)
+      renderedShallowWrapper.render()
+      // otherWrapper.props.children.map(ele => console.log(ele.props))
+      expect(renderedShallowWrapper.find('SevenHourForecast').length).toEqual(1)
       expect(renderedShallowWrapper.find('TenDayTab').length).toEqual(1)
-
     })
 
     it('should retrieve data from localStorage on mount', () => {

@@ -1,19 +1,4 @@
-.input-container {
-  background-image: url(https://hdqwalls.com/wallpapers/firewatch-sd.jpg);
-  background-repeat: no-repeat;
-  background-size: 120rem;
-  width: 100%;
-  height: 100vh;
-  filter: grayscale(10%);
-  text-align: center;
-  vertical-align: middle;
-  justify-content: center;
-  align-items: center;
-  color: rgb(125, 50, 10);
-  display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: 1fr 1fr 1fr;
-}
+
 
 .input-search {
   grid-template-columns: 1fr 1fr;
@@ -23,6 +8,10 @@
   align-self: start;
   justify-content: space-around;
 } 
+
+.input-rendered-welcome {
+  margin: 4rem 0 0 0;
+}
 
 .rendered-search {
   grid-template-rows: 1fr 1fr 1fr;
@@ -56,9 +45,9 @@ input::placeholder {
 }
 
 input[type="text"] {
-  font-family: beat;
+  font-family: daybold;
   font-size: 2rem;
-  color: gray;
+  color: #F9F9F9;
   line-height: 3rem;
 }
 
@@ -81,16 +70,20 @@ input[type="text"] {
   color: rgb(120, 120, 120);
   background-color: #81AFD0;
   margin-left: 1rem;
+  padding: .5rem;
 }
 
 .search-button:hover {
   animation: morphingLogo 4s linear infinite;
-  color: rgb(74, 96, 125);
+  background-color: rgb(74, 96, 125);
+  color: white;
+
 }
 
 .rendered-search-button:hover {
   animation: morphingLogo 4s linear infinite;
-  color: rgb(74, 96, 125);
+  background-color: rgb(74, 96, 125);
+  color: white;
   box-shadow: .1rem .1rem 2rem #6a8dc6;
   }
 
@@ -143,7 +136,7 @@ input[type="text"] {
   font-size: 1.5rem;
   margin: 0;
   font-family: daybold;
-  background-color: #6a8dc6;
+  background-color: #08565E;
   cursor: pointer;
   border: 1px solid rgb(175, 175, 238);
   opacity: 1;
@@ -151,7 +144,7 @@ input[type="text"] {
 }
 
 .rendered-suggestions:hover {
-  background-color: #99B4C2;
+  background-color: #99B4C2 ;
   opacity: .7
 }
 
@@ -164,5 +157,11 @@ input[type="text"] {
   }
   100% {
     filter: hue-rotate(-90deg);
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .rendered-search {
+    justify-self: end;
   }
 }
