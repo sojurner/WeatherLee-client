@@ -1,7 +1,7 @@
 .ten-day-button {
   grid-column: 9 / 11;
   justify-self: center;
-  font-family: daybold; 
+  font-family: daybold;
   grid-row: 2 / 4;
   height: 2rem;
   border-radius: 0.5rem;
@@ -10,7 +10,7 @@
   background-color: #6a8dc6;
   align-self: center;
   margin-bottom: 1rem;
-  padding-top: .2rem;
+  padding-top: 0.2rem;
 }
 
 .ten-day-button:hover {

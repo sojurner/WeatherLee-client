@@ -41,7 +41,7 @@
 }
 
 .current-weather-button {
-  font-family: daybold; 
+  font-family: daybold;
   grid-row: 2 / 4;
   height: 2rem;
   border-radius: 0.5rem;
@@ -50,8 +50,8 @@
   background-color: #6a8dc6;
   align-self: center;
   margin-bottom: 1rem;
-  padding-top: .2rem;
-  grid-column: 10 / 12 ;
+  padding-top: 0.2rem;
+  grid-column: 10 / 12;
   justify-self: end;
 }
 
@@ -73,14 +73,14 @@
   grid-column: 13 / 16;
   grid-row: 1 / 2;
   align-self: start;
-  margin: 1.5rem 0 0 .5rem;
+  margin: 1.5rem 0 0 0.5rem;
 }
 
 .current-time {
   font-size: 1.5rem;
   grid-row: 1 / 4;
   grid-column: 1 / 16;
-  color: #EF6A04;
+  color: #ef6a04;
   align-self: center;
   justify-self: center;
 }
@@ -110,7 +110,7 @@
   grid-column: 11 / 13;
   font-size: 4rem;
   display: inline-block;
-  color: red; 
+  color: red;
   margin-bottom: 8.5rem;
 }
 
