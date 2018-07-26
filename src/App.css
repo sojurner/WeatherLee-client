@@ -50,7 +50,9 @@
   background-color: #6a8dc6;
   align-self: center;
   margin-bottom: 1rem;
-  padding-top: .2rem
+  padding-top: .2rem;
+  grid-column: 10 / 12 ;
+  justify-self: end;
 }
 
 .current-weather-button:hover {
@@ -59,11 +61,6 @@
   color: white;
   cursor: pointer;
   box-shadow: 0 0 2rem #6a8dc6;
-}
-
-.current-weather-button {
-  grid-column: 10 / 12 ;
-  justify-self: end;
 }
 
 .current {
@@ -76,7 +73,7 @@
   grid-column: 13 / 16;
   grid-row: 1 / 2;
   align-self: start;
-  margin: 1.5rem 0 0 .5rem
+  margin: 1.5rem 0 0 .5rem;
 }
 
 .current-time {

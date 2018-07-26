@@ -8,7 +8,6 @@ describe('SevenHourForecast', () => {
 	let shallowWrapper;
 	let mountWrapper;
 	let childArray;
-
 	let sevenHourData = sevenHour(data)
 		
 	beforeEach( () => {
@@ -36,14 +35,14 @@ describe('SevenHourForecast', () => {
 			return { key: child.key } })
 
 		expect(childArray).toEqual([
-		{ key: '0' },
-		{ key: '1' },
-		{ key: '2' },
-		{ key: '3' },
-		{ key: '4' },
-		{ key: '5' },
-		{ key: '6' },
-		{ key: '7' } 
+			{ key: '0' },
+			{ key: '1' },
+			{ key: '2' },
+			{ key: '3' },
+			{ key: '4' },
+			{ key: '5' },
+			{ key: '6' },
+			{ key: '7' } 
 		])
 	})
 
@@ -114,5 +113,4 @@ describe('SevenHourForecast', () => {
 			{"icon": "http://icons.wxug.com/i/c/k/nt_clear.gif"}
 		])
 	})
-
 })

@@ -1,10 +1,5 @@
 import React from 'react'
-
 import { shallow, mount } from 'enzyme';
-
-import Search from './Search'
-
-import App from './App'
 import { TenDayTab } from './TenDayTab';
 
 describe('TenDayTab component', ()=> {
