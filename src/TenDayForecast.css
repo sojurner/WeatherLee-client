@@ -31,16 +31,16 @@
 
 
 .ten-day-cards {
-    width: 18rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 4rem 4rem 4rem;
-    -webkit-transition: 1s ease;
-    -o-transition: 1s ease;
-    transition: 1s ease;
-    border-radius: 1rem;
-    background: rgba(179, 186, 238, 0.53);
-    margin: 0 0.5rem;
+  width: 18rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4rem 4rem 4rem;
+  -webkit-transition: 1s ease;
+  -o-transition: 1s ease;
+  transition: 1s ease;
+  border-radius: 1rem;
+  background: rgba(179, 186, 238, 0.53);
+  margin: 0 0.5rem;
 }
 
 .ten-day-cards:hover {
@@ -63,7 +63,6 @@
   grid-row: 3 / 4;
   margin: 0;
   color: #4B4B4B;
-
 }
 
 .ten-day-high {
