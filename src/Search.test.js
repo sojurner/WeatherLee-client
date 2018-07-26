@@ -17,8 +17,9 @@ describe("Search component", () => {
   });
 
   it("should update State when input values are changed", () => {
-    let searchInput = wrapper.find("input");
+    expect(wrapper.state().location).toEqual(undefined);
 
+    let searchInput = wrapper.find("input");
     let event = { target: { value: "Denver" } };
 
     searchInput.simulate("change", event);
@@ -29,13 +30,31 @@ describe("Search component", () => {
   it("should track event of button click", () => {
     const mockCallBack = jest.fn();
 
-    let wrapperTwo = shallow(<Search setLocation={() => mockCallBack()} />);
-    let inputValue = wrapperTwo.find("input");
-    console.log(inputValue);
+    let wrapperTwo = mount(
+      <Search
+        setLocation={() => {
+          mockCallBack();
+        }}
+      />
+    );
+
     let searchButton = wrapperTwo.find("button");
 
     searchButton.simulate("click");
 
     expect(mockCallBack).toHaveBeenCalled();
+  });
+
+  it("should suggest cities based on user input", () => {
+    let userInput = wrapper.find("input");
+    let event = { target: { value: "bould" } };
+
+    userInput.simulate("change", event);
+
+    let suggestions = wrapper.find("section");
+    let suggestionArray = suggestions.props().children[0].props.children;
+    suggestions.simulate("click");
+
+    expect(suggestionArray).toEqual("boulder, co");
   });
 });

@@ -40,6 +40,7 @@ class App extends Component {
       })
       .then(response => {
         this.setState({
+          userLocation: "",
           currentTime: currWeather(response).time,
           currentWeather: currWeather(response),
           sevenHourForecast: sevenHour(response),
