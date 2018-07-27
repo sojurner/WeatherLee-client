@@ -3,6 +3,7 @@ import { configure, shallow, mount } from "enzyme";
 import App from "./App";
 
 import Adapter from "enzyme-adapter-react-16";
+import { sevenHour } from "./DataScrape";
 
 configure({ adapter: new Adapter() });
 
@@ -26,7 +27,6 @@ describe("App", () => {
   it("shall exist", () => {
     expect(renderedShallowWrapper).toBeDefined();
     expect(unrenderedShallowWrapper).toBeDefined();
-
     expect(mountWrapper).toBeDefined();
   });
 
@@ -69,19 +69,19 @@ describe("App", () => {
   });
 
   it.skip("shall render SevenHourForecast and TenDayForecast on click", () => {
-    expect(renderedShallowWrapper.find("SevenHourForecast").length).toEqual(0);
-    renderedShallowWrapper.instance().changeWeatherClicked(true, true, true);
-    renderedShallowWrapper.render();
-    // otherWrapper.props.children.map(ele => console.log(ele.props))
-    expect(renderedShallowWrapper.find("SevenHourForecast").length).toEqual(1);
-    expect(renderedShallowWrapper.find("TenDayTab").length).toEqual(1);
+    expect(mountWrapper.find("SevenHourForecast").length).toEqual(0);
+
+    mountWrapper.setState({ searched: true, sevenHourClicked: true });
+
+    expect(mountWrapper.find("sevenHourForecast").length).toEqual(1);
+    // expect(renderedShallowWrapper.find("TenDayForecast").length).toEqual(1);
   });
 
   it("should retrieve data from localStorage on mount", () => {
     let localLocation = localStorage.getItem("Location");
 
     mountWrapper.setState({ userLocation: localLocation });
-    console.log(mountWrapper);
+
     expect(mountWrapper.state().userLocation).toEqual("denver, co");
   });
 
@@ -90,7 +90,7 @@ describe("App", () => {
     expect(renderedShallowWrapper.state().userLocation).toEqual(90701);
   });
 
-  it("shall be able to handle a click event", () => {
+  it("shall changes state of weather properties on a click event", () => {
     expect(unrenderedShallowWrapper.state().currentWeatherClicked).toEqual(
       true
     );
