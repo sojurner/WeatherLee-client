@@ -1,7 +1,7 @@
 import { sevenHour, tenDay, currWeather } from "./DataScrape";
 import data from "./MockData";
 
-describe("SevenHourForecast", () => {
+describe("DataScrape", () => {
   it("shall take data and filter to return current information", () => {
     let currWeatherScrape = currWeather(data);
     expect(currWeatherScrape).toEqual({

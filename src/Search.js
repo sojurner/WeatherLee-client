@@ -12,7 +12,7 @@ class Search extends Component {
       suggestedLocations: []
     };
     this.trie = new Trie();
-    this.trie.populate(CityStateData.cityStateData.sort());
+    this.trie.populate(CityStateData.cityStateData);
   }
 
   updateVal = e => {
