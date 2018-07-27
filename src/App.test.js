@@ -66,7 +66,7 @@ describe("App", () => {
     expect(renderedShallowWrapper.find("Search").length).toEqual(1);
   });
 
-  it("shall render SevenHourForecast and TenDayForecast on click", () => {
+  it.skip("shall render SevenHourForecast and TenDayForecast on click", () => {
     expect(unrenderedShallowWrapper.find("SevenHourForecast").length).toEqual(
       0
     );
@@ -78,10 +78,16 @@ describe("App", () => {
       currentWeather: false
     });
 
-    unrenderedShallowWrapper.props().children.map(x => console.log(x));
-    // .children.map(prop => console.log(prop.props));
-    expect(mountWrapper.find("SevenHourForecast").length).toEqual(1);
-    // expect(renderedShallowWrapper.find("TenDayForecast").length).toEqual(1);
+    let renderedTenDay = unrenderedShallowWrapper
+      .props()
+      .children.map(prop => prop.props);
+
+    console.log(renderedSevenHour);
+    expect(
+      renderedSevenHour[renderedSevenHour.length - 1].tenDayForecast
+    ).toEqual([]);
+
+    expect(renderedShallowWrapper.find("TenDayForecast").length).toEqual(1);
   });
 
   it("should retrieve data from localStorage on mount", () => {

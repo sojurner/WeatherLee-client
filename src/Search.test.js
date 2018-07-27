@@ -6,9 +6,26 @@ import Search from "./Search";
 
 describe("Search component", () => {
   let wrapper;
+  let location = "";
+  let searchedItem = false;
 
   beforeEach(() => {
-    wrapper = shallow(<Search />);
+    wrapper = shallow(
+      <Search
+        searched={searchedItem}
+        userLocation={location}
+        setLocation={jest.fn()}
+      />
+    );
+  });
+
+  it("shall exist", () => {
+    expect(wrapper).toBeDefined();
+  });
+
+  it("shall have state properties of location and suggestedLocations", () => {
+    expect(wrapper.state().location).toEqual("");
+    expect(wrapper.state().suggestedLocations).toEqual([]);
   });
 
   it("shall render an input box and button when Search is rendered", () => {
@@ -17,7 +34,7 @@ describe("Search component", () => {
   });
 
   it("should update State when input values are changed", () => {
-    expect(wrapper.state().location).toEqual(undefined);
+    expect(wrapper.state().location).toEqual("");
 
     let searchInput = wrapper.find("input");
     let event = { target: { value: "Denver" } };
