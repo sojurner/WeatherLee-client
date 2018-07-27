@@ -47,15 +47,17 @@ describe("Search component", () => {
 
   it("should suggest cities based on user input", () => {
     let userInput = wrapper.find("input");
-    let event = { target: { value: "bould" } };
+    let event = { target: { value: "san a" } };
 
     userInput.simulate("change", event);
 
-    let suggestions = wrapper.find("section");
-    let suggestion = suggestions.props().children[0].props.children;
+    let suggestion = wrapper.find("section");
+    let suggestions = suggestion
+      .props()
+      .children.map(prop => prop.props.children);
 
-    suggestions.simulate("click");
+    suggestion.simulate("click");
 
-    expect(suggestion).toEqual("boulder, co");
+    expect(suggestions).toEqual(["san antonio, tx", "san angelo, tx"]);
   });
 });
