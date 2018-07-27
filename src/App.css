@@ -74,7 +74,7 @@
   grid-row: 1 / 2;
   align-self: center;
   justify-self: end;
-  margin: 0 4rem 6rem 0;
+  margin: 0 3rem 8rem 0;
 }
 
 .current-time {
@@ -91,10 +91,11 @@
   grid-row: 1 / 4;
   grid-column: 1 / 9;
   justify-self: center;
+  -ms-flex-item-align: center;
   align-self: center;
-  font-size: 8rem;
+  font-size: 10rem;
   color: greenyellow;
-  margin-bottom: 14rem;
+  margin-bottom: 17rem;
 }
 
 .current-low {
@@ -122,7 +123,7 @@
   grid-row: 1 / 2;
   grid-column: 7 / 8;
   font-size: 2rem;
-  margin: 5rem 0 0 0;
+  margin: 4rem 0 0 0;
   justify-self: center;
 }
 
@@ -131,7 +132,7 @@
   grid-row: 1 / 2;
   grid-column: 8 / 9;
   justify-self: center;
-  margin: 6rem 3rem 0 0;
+  margin: 3rem 0 0 0;
 }
 
 @media screen and (max-width: 1710px) {
@@ -153,6 +154,10 @@
 
   .rendered-search {
     margin-top: 2rem;
+  }
+
+  .input-rendered-welcome {
+    display: none;
   }
 }
 
