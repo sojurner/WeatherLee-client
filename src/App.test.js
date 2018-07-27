@@ -1,9 +1,7 @@
 import React from "react";
-import { configure, shallow, mount } from "enzyme";
+import { configure, shallow, mount, render } from "enzyme";
 import App from "./App";
-
 import Adapter from "enzyme-adapter-react-16";
-import { sevenHour } from "./DataScrape";
 
 configure({ adapter: new Adapter() });
 
@@ -69,12 +67,27 @@ describe("App", () => {
   });
 
   it.skip("shall render SevenHourForecast and TenDayForecast on click", () => {
-    expect(mountWrapper.find("SevenHourForecast").length).toEqual(0);
+    expect(unrenderedShallowWrapper.find("SevenHourForecast").length).toEqual(
+      0
+    );
 
-    mountWrapper.setState({ searched: true, sevenHourClicked: true });
+    unrenderedShallowWrapper.setState({
+      searched: true,
+      sevenHourClicked: false,
+      tenDayClicked: true,
+      currentWeather: false
+    });
 
-    expect(mountWrapper.find("sevenHourForecast").length).toEqual(1);
-    // expect(renderedShallowWrapper.find("TenDayForecast").length).toEqual(1);
+    let renderedTenDay = unrenderedShallowWrapper
+      .props()
+      .children.map(prop => prop.props);
+
+    console.log(renderedSevenHour);
+    expect(
+      renderedSevenHour[renderedSevenHour.length - 1].tenDayForecast
+    ).toEqual([]);
+
+    expect(renderedShallowWrapper.find("TenDayForecast").length).toEqual(1);
   });
 
   it("should retrieve data from localStorage on mount", () => {

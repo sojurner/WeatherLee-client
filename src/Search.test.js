@@ -6,9 +6,26 @@ import Search from "./Search";
 
 describe("Search component", () => {
   let wrapper;
+  let location = "";
+  let searchedItem = false;
 
   beforeEach(() => {
-    wrapper = shallow(<Search />);
+    wrapper = shallow(
+      <Search
+        searched={searchedItem}
+        userLocation={location}
+        setLocation={jest.fn()}
+      />
+    );
+  });
+
+  it("shall exist", () => {
+    expect(wrapper).toBeDefined();
+  });
+
+  it("shall have state properties of location and suggestedLocations", () => {
+    expect(wrapper.state().location).toEqual("");
+    expect(wrapper.state().suggestedLocations).toEqual([]);
   });
 
   it("shall render an input box and button when Search is rendered", () => {
@@ -17,7 +34,7 @@ describe("Search component", () => {
   });
 
   it("should update State when input values are changed", () => {
-    expect(wrapper.state().location).toEqual(undefined);
+    expect(wrapper.state().location).toEqual("");
 
     let searchInput = wrapper.find("input");
     let event = { target: { value: "Denver" } };
@@ -47,15 +64,17 @@ describe("Search component", () => {
 
   it("should suggest cities based on user input", () => {
     let userInput = wrapper.find("input");
-    let event = { target: { value: "bould" } };
+    let event = { target: { value: "san a" } };
 
     userInput.simulate("change", event);
 
-    let suggestions = wrapper.find("section");
-    let suggestion = suggestions.props().children[0].props.children;
+    let suggestion = wrapper.find("section");
+    let suggestions = suggestion
+      .props()
+      .children.map(prop => prop.props.children);
 
-    suggestions.simulate("click");
+    suggestion.simulate("click");
 
-    expect(suggestion).toEqual("boulder, co");
+    expect(suggestions).toEqual(["san antonio, tx", "san angelo, tx"]);
   });
 });
