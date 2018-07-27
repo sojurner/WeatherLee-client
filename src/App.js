@@ -106,12 +106,12 @@ class App extends Component {
         )}
         {this.state.searched && (
           <div className="current current-high">
-            ↑ {this.state.currentWeather.high}{" "}
+            ↑{this.state.currentWeather.high}{" "}
           </div>
         )}
         {this.state.searched && (
           <div className="current current-low">
-            ↓ {this.state.currentWeather.low}{" "}
+            ↓{this.state.currentWeather.low}{" "}
           </div>
         )}
         {this.state.searched && (
