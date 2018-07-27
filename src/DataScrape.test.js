@@ -2,8 +2,11 @@ import { sevenHour, tenDay, currWeather } from "./DataScrape";
 import data from "./MockData";
 
 describe("DataScrape", () => {
+  let currWeatherScrape = currWeather(data);
+  let sevenHourScrape = sevenHour(data);
+  let tenDayScrape = tenDay(data);
+
   it("shall take data and filter to return current information", () => {
-    let currWeatherScrape = currWeather(data);
     expect(currWeatherScrape).toEqual({
       time: "Last Updated on December 20, 11:27 AM EST",
       location: "Louisville, KY",
@@ -16,7 +19,6 @@ describe("DataScrape", () => {
   });
 
   it("shall take data and filter to return seven hour information", () => {
-    let sevenHourScrape = sevenHour(data);
     expect(sevenHourScrape).toEqual([
       {
         time: "12:00 PM",
@@ -70,7 +72,6 @@ describe("DataScrape", () => {
   });
 
   it("shall take data and filter to return ten day information", () => {
-    let tenDayScrape = tenDay(data);
     expect(tenDayScrape).toEqual([
       {
         day: "Wednesday",

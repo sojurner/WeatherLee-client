@@ -1,46 +1,32 @@
 import React from "react";
 import { mount } from "enzyme";
-
+import data from "./MockData.js";
+import { sevenHour, tenDay } from "./DataScrape.js";
 import { Card } from "./Card";
 
 describe("Card", () => {
   let sevenHourWrapper;
   let tenDayWrapper;
-  let sevenHourData = {
-    key: 1,
-    time: "12:00 PM",
-    temp: "47°F",
-    condition: "Partly Cloudy",
-    icon_url: "http://icons.wxug.com/i/c/k/partlycloudy.gif"
-  };
-
-  let tenDayData = {
-    key: 1,
-    day: "Wednesday",
-    date: "12/20/2017",
-    high: "51°F",
-    low: "32°F",
-    icon: "http://icons.wxug.com/i/c/k/partlycloudy.gif"
-  };
 
   beforeEach(() => {
     sevenHourWrapper = mount(
       <Card
-        key={sevenHourData.key}
-        condition={sevenHourData.condition}
-        time={sevenHourData.time}
-        temp={sevenHourData.temp}
-        icon_url={sevenHourData.icon_url}
+        key={sevenHour(data)[0].time}
+        condition={sevenHour(data)[0].condition}
+        time={sevenHour(data)[0].time}
+        temp={sevenHour(data)[0].temp}
+        icon_url={sevenHour(data)[0].icon_url}
       />
     );
 
     tenDayWrapper = mount(
       <Card
-        key={tenDayData.key}
-        day={tenDayData.day}
-        date={tenDayData.high}
-        high={tenDayData.low}
-        icon={tenDayData.icon}
+        key={tenDay(data)[0].key}
+        day={tenDay(data)[0].day}
+        date={tenDay(data)[0].date}
+        high={tenDay(data)[0].high}
+        low={tenDay(data)[0].low}
+        icon={tenDay(data)[0].icon}
       />
     );
   });
@@ -51,7 +37,22 @@ describe("Card", () => {
   });
 
   it("should create seven hour and ten day cards", () => {
+    expect(sevenHourWrapper.props().condition).toEqual("Partly Cloudy");
+    expect(sevenHourWrapper.props().time).toEqual("12:00 PM");
+    expect(sevenHourWrapper.props().temp).toEqual("47°F");
+    expect(sevenHourWrapper.props().icon_url).toEqual(
+      "http://icons.wxug.com/i/c/k/partlycloudy.gif"
+    );
     expect(sevenHourWrapper.find("p").length).toEqual(3);
+
+    expect(tenDayWrapper.props().day).toEqual("Wednesday");
+    expect(tenDayWrapper.props().date).toEqual("12/20/2017");
+    expect(tenDayWrapper.props().low).toEqual("32°F");
+    expect(tenDayWrapper.props().high).toEqual("51°F");
+    expect(tenDayWrapper.props().icon).toEqual(
+      "http://icons.wxug.com/i/c/k/partlycloudy.gif"
+    );
+
     expect(tenDayWrapper.find("p").length).toEqual(4);
   });
 });
