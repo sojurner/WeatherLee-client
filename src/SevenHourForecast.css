@@ -7,6 +7,7 @@
 }
 
 .seven-hour {
+  color: #4b4b4b;
   font-family: daybold;
   height: 11rem;
   overflow: auto;
@@ -37,7 +38,6 @@
 .seven-hour-cards:hover {
   background: rgba(179, 186, 238, 0.8);
   filter: brightness(100%);
-  color: white;
 }
 
 .seven-hour-time,
@@ -56,7 +56,6 @@
 }
 
 .seven-hour-temperature {
-  animation: hueChange 4s linear infinite;
   font-size: 2.9rem;
   grid-column: 2 / 4;
   grid-row: 1 / 3;
@@ -67,6 +66,10 @@
   justify-items: center;
 }
 
+.seven-hour-temperature:hover {
+  animation: hueChange 4s linear infinite;
+}
+
 .seven-hour-conditions {
   color: rgb(232, 232, 232);
   font-size: 1.5rem;
@@ -74,10 +77,6 @@
   grid-row: 2 / 3;
   align-self: end;
   justify-self: center;
-}
-
-.seven-hour-conditions:hover {
-  color: gray;
 }
 
 .seven-hour-icon {
