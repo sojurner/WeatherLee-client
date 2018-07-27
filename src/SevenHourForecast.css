@@ -3,7 +3,6 @@
   margin-top: 7rem;
   font-family: hughes;
   font-size: 2.5rem;
-  float: left;
   display: inline-block;
 }
 
@@ -11,12 +10,14 @@
   font-family: daybold;
   height: 11rem;
   overflow: auto;
-  grid-column: 2 / 15;
+  grid-column: 1 / 9;
   grid-row: 3 / 4;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-self: center;
   animation: shazam 1s linear, bazinga 1s ease-in;
+  justify-content: space-between;
+  margin: 0 4rem;
 }
 
 .seven-hour-cards {

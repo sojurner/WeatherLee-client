@@ -1,5 +1,5 @@
 .ten-day-button {
-  grid-column: 9 / 11;
+  grid-column: 4 / 7;
   justify-self: center;
   font-family: daybold;
   grid-row: 2 / 4;
@@ -8,6 +8,7 @@
   font-size: 1.5rem;
   width: 8rem;
   background-color: #6a8dc6;
+  justify-self: center;
   align-self: center;
   margin-bottom: 1rem;
   padding-top: 0.2rem;
