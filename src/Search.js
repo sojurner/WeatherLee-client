@@ -30,13 +30,14 @@ class Search extends Component {
   }
 
   render() {
-    // let classn = !this.props.searched ? "input-search" : "rendered-search";
     return (
       <div
         className={!this.props.searched ? "input-search" : "rendered-search"}
       >
         <input
-          className="search-box"
+          className={
+            !this.props.searched ? "search-box" : "rendered-search-box"
+          }
           type="text"
           placeholder=" Enter city / zipcode"
           onChange={e => {
@@ -46,7 +47,9 @@ class Search extends Component {
           value={this.state.location}
         />
         <button
-          className="search-button"
+          className={
+            !this.props.searched ? "search-button" : "rendered-search-button"
+          }
           onClick={e => {
             this.props.setLocation(this.state.location);
             this.setState({ location: "" });
@@ -54,12 +57,22 @@ class Search extends Component {
         >
           Search
         </button>
-        <section className="input-suggest-list">
+        <section
+          className={
+            !this.props.searched
+              ? "input-suggest-list"
+              : "rendered-suggest-list-two"
+          }
+        >
           {this.state.suggestedLocations.map((location, i) => {
             if (i < 3 && this.state.location.length > 3) {
               return (
                 <p
-                  className="input-suggestions"
+                  className={
+                    !this.props.searched
+                      ? "input-suggestions"
+                      : "rendered-suggestions"
+                  }
                   key={i}
                   onClick={e => {
                     this.props.setLocation(e.target.textContent);
@@ -75,47 +88,6 @@ class Search extends Component {
       </div>
     );
   }
-  //     return (
-  //       <div className="rendered-search">
-  //         <input
-  //           className="rendered-search-box"
-  //           type="text"
-  //           placeholder=" Enter city / zipcode"
-  //           onChange={e => {
-  //             this.updateVal(e);
-  //             this.showSuggestions(e);
-  //           }}
-  //           value={this.state.location}
-  //         />
-  //         <button
-  //           className="rendered-search-button"
-  //           onClick={e => {
-  //             this.props.setLocation(this.state.location);
-  //             this.setState({ location: "" });
-  //           }}
-  //         >
-  //           Search
-  //         </button>
-  //         <section className="rendered-suggest-list-two">
-  //           {this.state.suggestedLocations.map((location, i) => {
-  //             if (i < 3 && this.state.location.length > 3) {
-  //               return (
-  //                 <p
-  //                   className="rendered-suggestions"
-  //                   key={i}
-  //                   onClick={e => {
-  //                     this.props.setLocation(e.target.textContent);
-  //                     this.setState({ suggestedLocations: [], location: "" });
-  //                   }}
-  //                 >
-  //                   {location}
-  //                 </p>
-  //               );
-  //             }
-  //           })}
-  //         </section>
-  //       </div>
-  //     );
 }
 
 export default Search;
