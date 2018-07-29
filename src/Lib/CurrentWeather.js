@@ -1,0 +1,15 @@
+import React from "../../../../../Library/Caches/typescript/2.9/node_modules/@types/react";
+
+export const CurrentWeather = props => {
+  return (
+    <div className="current-weather">
+      <p className="current-location">{props.currentWeather.location}</p>
+      <p className="current-time">{props.currentWeather.time}</p>
+      <p className="current-temp">{props.currentWeather.current}</p>
+      <p className="current-high">{props.currentWeather.high}</p>
+      <p className="current-low">{props.currentWeather.low}</p>
+      <p className="current-conditions">{props.currentWeather.conditions}</p>
+      <img className="current-icon" src={props.currentWeather.icon} />
+    </div>
+  );
+};
