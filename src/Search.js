@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Search.css";
+import "./CSS/Search.css";
 
 import CityStateData from "./Algorithms/CityStateData";
 const { Trie } = require("@sojurner/complete-me/lib");

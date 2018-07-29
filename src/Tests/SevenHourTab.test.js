@@ -1,13 +1,13 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import { TenDayTab } from "./TenDayTab";
+import { SevenHourTab } from "../SevenHourTab";
 
-describe("TenDayTab component", () => {
+describe("SevenHourTab component", () => {
   let shallowWrapper;
   let mountWrapper;
   beforeEach(() => {
-    shallowWrapper = shallow(<TenDayTab />);
-    mountWrapper = mount(<TenDayTab />);
+    shallowWrapper = shallow(<SevenHourTab />);
+    mountWrapper = mount(<SevenHourTab />);
   });
 
   it("should exist", () => {
@@ -16,8 +16,8 @@ describe("TenDayTab component", () => {
   });
 
   it("should have default state properties for sevenHourClicked, tenDayClicked, currentWeather", () => {
-    expect(shallowWrapper.state().sevenHourClicked).toEqual(false);
-    expect(shallowWrapper.state().tenDayClicked).toEqual(true);
+    expect(shallowWrapper.state().sevenHourClicked).toEqual(true);
+    expect(shallowWrapper.state().tenDayClicked).toEqual(false);
     expect(shallowWrapper.state().currentWeather).toEqual(false);
   });
 
@@ -28,7 +28,7 @@ describe("TenDayTab component", () => {
   it("should handle a click event", () => {
     const mockCallBack = jest.fn();
     let wrapperTwo = shallow(
-      <TenDayTab
+      <SevenHourTab
         changeWeatherClicked={() => {
           mockCallBack();
         }}

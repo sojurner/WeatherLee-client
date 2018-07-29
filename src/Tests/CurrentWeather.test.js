@@ -1,9 +1,9 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 
-import { currWeather } from "./DataScrape";
-import data from "./MockData";
-import { CurrentWeather } from "./CurrentWeather";
+import { currWeather } from "../DataScrape";
+import data from "../MockData";
+import { CurrentWeather } from "../CurrentWeather";
 
 describe("SevenHourForecast", () => {
   let shallowWrapper;
