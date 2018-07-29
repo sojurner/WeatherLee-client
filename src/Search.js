@@ -30,80 +30,40 @@ class Search extends Component {
   }
 
   render() {
-    if (!this.props.searched) {
-      return (
-        <div className="input-search">
-          <input
-            className="search-box"
-            type="text"
-            placeholder=" Enter city / zipcode"
-            onChange={e => {
-              this.updateVal(e);
-              this.showSuggestions(e);
-            }}
-          />
-          <button
-            className="search-button"
-            onClick={e => {
-              this.props.setLocation(this.state.location);
-              document.querySelector(".search-box").value = "";
-            }}
-          >
-            Search
-          </button>
-          <section className="input-suggest-list">
-            {this.state.suggestedLocations.map((location, i) => {
-              if (i < 3 && this.state.location.length > 3) {
-                return (
-                  <p
-                    className="input-suggestions"
-                    key={i}
-                    onClick={e => {
-                      this.props.setLocation(e.target.textContent);
-                      this.setState({ suggestedLocations: [] });
-                      document.querySelector(".search-box").value = "";
-                    }}
-                  >
-                    {location}
-                  </p>
-                );
-              }
-            })}
-          </section>
-        </div>
-      );
-    }
+    // let classn = !this.props.searched ? "input-search" : "rendered-search";
     return (
-      <div className="rendered-search">
+      <div
+        className={!this.props.searched ? "input-search" : "rendered-search"}
+      >
         <input
-          className="rendered-search-box"
+          className="search-box"
           type="text"
           placeholder=" Enter city / zipcode"
           onChange={e => {
             this.updateVal(e);
             this.showSuggestions(e);
           }}
+          value={this.state.location}
         />
         <button
-          className="rendered-search-button"
+          className="search-button"
           onClick={e => {
             this.props.setLocation(this.state.location);
-            document.querySelector("input").value = "";
+            this.setState({ location: "" });
           }}
         >
           Search
         </button>
-        <section className="rendered-suggest-list-two">
+        <section className="input-suggest-list">
           {this.state.suggestedLocations.map((location, i) => {
             if (i < 3 && this.state.location.length > 3) {
               return (
                 <p
-                  className="rendered-suggestions"
+                  className="input-suggestions"
                   key={i}
                   onClick={e => {
                     this.props.setLocation(e.target.textContent);
-                    this.setState({ suggestedLocations: [] });
-                    document.querySelector("input").value = "";
+                    this.setState({ suggestedLocations: [], location: "" });
                   }}
                 >
                   {location}
@@ -115,6 +75,47 @@ class Search extends Component {
       </div>
     );
   }
+  //     return (
+  //       <div className="rendered-search">
+  //         <input
+  //           className="rendered-search-box"
+  //           type="text"
+  //           placeholder=" Enter city / zipcode"
+  //           onChange={e => {
+  //             this.updateVal(e);
+  //             this.showSuggestions(e);
+  //           }}
+  //           value={this.state.location}
+  //         />
+  //         <button
+  //           className="rendered-search-button"
+  //           onClick={e => {
+  //             this.props.setLocation(this.state.location);
+  //             this.setState({ location: "" });
+  //           }}
+  //         >
+  //           Search
+  //         </button>
+  //         <section className="rendered-suggest-list-two">
+  //           {this.state.suggestedLocations.map((location, i) => {
+  //             if (i < 3 && this.state.location.length > 3) {
+  //               return (
+  //                 <p
+  //                   className="rendered-suggestions"
+  //                   key={i}
+  //                   onClick={e => {
+  //                     this.props.setLocation(e.target.textContent);
+  //                     this.setState({ suggestedLocations: [], location: "" });
+  //                   }}
+  //                 >
+  //                   {location}
+  //                 </p>
+  //               );
+  //             }
+  //           })}
+  //         </section>
+  //       </div>
+  //     );
 }
 
 export default Search;
