@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "./Card";
-import "./TenDayForecast.css";
+import "./CSS/TenDayForecast.css";
 
 export const TenDayForecast = props => {
   return (

@@ -1,6 +1,6 @@
 @font-face {
   font-family: daybold;
-  src: url(fonts/Daybold.otf);
+  src: url(../fonts/Daybold.otf);
 }
 
 .input-container {

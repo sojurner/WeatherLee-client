@@ -1,5 +1,5 @@
-import { sevenHour, tenDay, currWeather } from "./DataScrape";
-import data from "./MockData";
+import { sevenHour, tenDay, currWeather } from "../DataScrape";
+import data from "../MockData";
 
 describe("DataScrape", () => {
   let currWeatherScrape = currWeather(data);

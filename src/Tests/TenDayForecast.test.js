@@ -1,8 +1,8 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import { tenDay } from "./DataScrape";
-import data from "./MockData";
-import { TenDayForecast } from "./TenDayForecast";
+import { tenDay } from "../DataScrape";
+import data from "../MockData";
+import { TenDayForecast } from "../TenDayForecast";
 
 describe("TenDayForecast", () => {
   let shallowWrapper;

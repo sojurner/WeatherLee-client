@@ -1,8 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
-import data from "./MockData.js";
-import { sevenHour, tenDay } from "./DataScrape.js";
-import { Card } from "./Card";
+import data from "../MockData.js";
+import { sevenHour, tenDay } from "../DataScrape.js";
+import { Card } from "../Card";
 
 describe("Card", () => {
   let sevenHourWrapper;

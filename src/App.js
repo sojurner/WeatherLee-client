@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./CSS/App.css";
 import Welcome from "./Welcome";
 import WelcomeRendered from "./WelcomeRendered";
 import Search from "./Search";
