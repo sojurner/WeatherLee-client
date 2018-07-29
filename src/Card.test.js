@@ -37,22 +37,55 @@ describe("Card", () => {
   });
 
   it("should create seven hour and ten day cards", () => {
-    expect(sevenHourWrapper.props().condition).toEqual("Partly Cloudy");
-    expect(sevenHourWrapper.props().time).toEqual("12:00 PM");
-    expect(sevenHourWrapper.props().temp).toEqual("47°F");
-    expect(sevenHourWrapper.props().icon_url).toEqual(
-      "http://icons.wxug.com/i/c/k/partlycloudy.gif"
-    );
     expect(sevenHourWrapper.find("p").length).toEqual(3);
 
-    expect(tenDayWrapper.props().day).toEqual("Wednesday");
-    expect(tenDayWrapper.props().date).toEqual("12/20/2017");
-    expect(tenDayWrapper.props().low).toEqual("32°F");
-    expect(tenDayWrapper.props().high).toEqual("51°F");
+    expect(
+      sevenHourWrapper
+        .find("p")
+        .first()
+        .text()
+    ).toEqual("12:00 PM");
+    expect(
+      sevenHourWrapper
+        .find("p")
+        .at(1)
+        .text()
+    ).toEqual("47°F");
+    expect(
+      sevenHourWrapper
+        .find("p")
+        .at(2)
+        .text()
+    ).toEqual("Partly Cloudy");
+
+    expect(tenDayWrapper.find("p").length).toEqual(4);
+
+    expect(
+      tenDayWrapper
+        .find("p")
+        .first()
+        .text()
+    ).toEqual("Wednesday");
+    expect(
+      tenDayWrapper
+        .find("p")
+        .at(1)
+        .text()
+    ).toEqual("12/20/2017");
+    expect(
+      tenDayWrapper
+        .find("p")
+        .at(2)
+        .text()
+    ).toEqual("51°F");
+    expect(
+      tenDayWrapper
+        .find("p")
+        .at(3)
+        .text()
+    ).toEqual("32°F");
     expect(tenDayWrapper.props().icon).toEqual(
       "http://icons.wxug.com/i/c/k/partlycloudy.gif"
     );
-
-    expect(tenDayWrapper.find("p").length).toEqual(4);
   });
 });

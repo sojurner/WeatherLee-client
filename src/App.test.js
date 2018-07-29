@@ -60,7 +60,7 @@ describe("App", () => {
   });
 
   it("shall render Welcome, Search, SevenHourTab and TenDayTab", () => {
-    expect(renderedShallowWrapper.find("div").length).toEqual(7);
+    expect(renderedShallowWrapper.find("div").length).toEqual(1);
     expect(renderedShallowWrapper.find("SevenHourTab").length).toEqual(1);
     expect(renderedShallowWrapper.find("TenDayTab").length).toEqual(1);
     expect(renderedShallowWrapper.find("Search").length).toEqual(1);
