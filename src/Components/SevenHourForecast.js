@@ -1,6 +1,6 @@
-import React from "react";
-import { Card } from "./Card";
-import "./CSS/SevenHourForecast.css";
+import React from 'react';
+import { Card } from './Card';
+import '../CSS/SevenHourForecast.css';
 
 export const SevenHourForecast = props => {
   return (

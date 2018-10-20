@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@sojurner/complete-me": "git+https://github.com/sojurner/Complete-me.git",
+    "isomorphic-fetch": "^2.2.1",
+    "momentjs": "^2.0.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
@@ -21,5 +23,6 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "react-test-renderer": "^16.4.1"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

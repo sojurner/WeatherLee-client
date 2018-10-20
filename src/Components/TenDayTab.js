@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import "./CSS/TenDayTab.css";
+import React, { Component } from 'react';
+import '../CSS/TenDayTab.css';
 
 export class TenDayTab extends Component {
   constructor(props) {

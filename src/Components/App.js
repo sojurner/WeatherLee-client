@@ -1,21 +1,22 @@
-import React, { Component } from "../../../../../../Library/Caches/typescript/2.9/node_modules/@types/react";
-import "./CSS/App.css";
-import Welcome from "./Welcome";
-import WelcomeRendered from "./WelcomeRendered";
-import Search from "./Search";
-import Key from "./Key";
-import { SevenHourTab } from "./SevenHourTab";
-import { CurrentWeather } from "../CurrentWeather";
-import { TenDayTab } from "./TenDayTab";
-import { SevenHourForecast } from "./SevenHourForecast";
-import { TenDayForecast } from "./TenDayForecast";
-import { currWeather, sevenHour, tenDay } from "./DataScrape";
+import React, { Component } from 'react';
+import '../CSS/App.css';
+import Welcome from './Welcome';
+import WelcomeRendered from './WelcomeRendered';
+import Search from './Search';
+import { SevenHourTab } from './SevenHourTab';
+import { CurrentWeather } from './CurrentWeather';
+import { TenDayTab } from './TenDayTab';
+import { SevenHourForecast } from './SevenHourForecast';
+import { TenDayForecast } from './TenDayForecast';
+import { currWeather, sevenHour, tenDay } from '../Helpers/DataScrape';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      userLocation: "",
+      userLocation: '',
+      latitude: 0,
+      longitude: 0,
       currentWeather: {},
       sevenHourForecast: [],
       tenDayForecast: [],
@@ -28,30 +29,26 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    if (localStorage.getItem("Location")) {
-      this.getWeather(localStorage.getItem("Location"));
-    }
+    // if (localStorage.getItem('Location')) {
+    this.getWeather(localStorage.getItem('Location'));
+    // }
   };
 
-  getWeather = search => {
-    const url = `http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/${search}.json`;
-    fetch(url)
-      .then(data => {
-        return data.json();
-      })
-      .then(response => {
-        this.setState({
-          userLocation: "",
-          currentTime: currWeather(response).time,
-          currentWeather: currWeather(response),
-          sevenHourForecast: sevenHour(response),
-          tenDayForecast: tenDay(response),
-          searched: true,
-          error: false
-        });
-      })
-      .catch(error => {});
-    localStorage.setItem("Location", search);
+  getWeather = async search => {
+    const { latitude, longitude } = this.state;
+    const location = navigator.geolocation.getCurrentPosition(
+      async location => {
+        const response = await fetch(
+          `/api/darksky?latitude=${location.coords.latitude}&longitude=${
+            location.coords.longitude
+          }`,
+          null
+        );
+        const x = await response.json();
+        console.log(x);
+      }
+    );
+    console.log(location);
   };
 
   setLocation = search => {

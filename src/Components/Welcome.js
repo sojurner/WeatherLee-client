@@ -1,5 +1,5 @@
-import React from "react";
-import "./CSS/Welcome.css";
+import React from 'react';
+import '../CSS/Welcome.css';
 
 const Welcome = props => {
   return (
