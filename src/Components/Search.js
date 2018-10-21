@@ -22,7 +22,8 @@ class Search extends Component {
     const { value } = e.target;
     this.setState({
       location: value,
-      suggestedLocations: this.getSuggestions(value)
+      suggestedLocations: this.getSuggestions(value),
+      cursor: 0
     });
   };
 
