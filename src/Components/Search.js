@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import '../CSS/Search.css';
 import cities from '../Data/worldCitiesArray.json';
 
-import CityStateData from '../Algorithms/CityStateData';
-// const { Trie } = require('@sojurner/complete-me/lib');
-
 class Search extends Component {
   constructor(props) {
     super(props);
