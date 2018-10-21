@@ -67,11 +67,16 @@ class Search extends Component {
     }
   };
 
+  resetState = location => {
+    this.props.setLocation(location);
+    this.setState({ location: '', suggestedLocations: [] });
+  };
+
   render() {
+    const { searched, setLocation } = this.props;
+    const { suggestedLocations, location, cursor } = this.state;
     return (
-      <div
-        className={!this.props.searched ? 'input-search' : 'rendered-search'}
-      >
+      <div className={!searched ? 'input-search' : 'rendered-search'}>
         <input
           className={
             !this.props.searched ? 'search-box' : 'rendered-search-box'
