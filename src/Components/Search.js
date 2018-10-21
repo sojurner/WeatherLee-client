@@ -13,14 +13,6 @@ class Search extends Component {
     this.textContent = React.createRef();
   }
 
-  componentDidUpdate() {
-    console.log(this.state.cursor);
-  }
-
-  componentDidMount() {
-    this.state.suggestedLocations;
-  }
-
   updateVal = e => {
     e.preventDefault();
     const { value } = e.target;
@@ -77,12 +69,12 @@ class Search extends Component {
   };
 
   render() {
-    const { searched, setLocation } = this.props;
+    const { userLocation } = this.props;
     const { suggestedLocations, location, cursor } = this.state;
     return (
-      <div className={!searched ? 'input-search' : 'rendered-search'}>
+      <div className={!userLocation ? 'input-search' : 'rendered-search'}>
         <input
-          className={!searched ? 'search-box' : 'rendered-search-box'}
+          className={!userLocation ? 'search-box' : 'rendered-search-box'}
           type="text"
           placeholder=" Enter City"
           onChange={e => {
@@ -94,7 +86,7 @@ class Search extends Component {
         <section
           ref={this.textContent}
           className={
-            !searched ? 'input-suggest-list' : 'rendered-suggest-list-two'
+            !userLocation ? 'input-suggest-list' : 'rendered-suggest-list-two'
           }
         >
           {suggestedLocations.map((location, index) => {
