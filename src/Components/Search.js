@@ -45,15 +45,14 @@ class Search extends Component {
     return suggestion;
   };
 
-  // showSuggestions() {
-  //   if (!this.state.location) {
-  //     this.setState({ suggestedLocations: [] });
-  //   } else {
-  //     this.setState({
-  //       suggestedLocations: this.trie.suggest(this.state.location)
-  //     });
-  //   }
-  // }
+  handleKeyDown = e => {
+    console.log(e.keyCode);
+    const { cursor, suggestedLocations } = this.state;
+    if (e.keyCode === 38 && cursor > 0) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor - 1
+      }));
+    }
 
   render() {
     return (
