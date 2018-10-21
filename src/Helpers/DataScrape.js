@@ -14,20 +14,26 @@ export const currWeather = data => {
   return currDayObj;
 };
 
-export const sevenHour = response => {
-  return response.hourly_forecast
-    .filter(obj => Object.values(obj))
-    .reduce((sevenHour, hour, i) => {
-      if (i < 8) {
-        sevenHour.push({
-          time: hour.FCTTIME.civil,
-          temp: Math.floor(hour.temp.english) + "°F",
-          condition: hour.condition,
-          icon_url: hour.icon_url
-        });
-      }
-      return sevenHour;
-    }, []);
+export const daily = cityData => {
+  return cityData.daily.data
+    .map(day => {
+      return {
+        time: moment.unix(day.time).format('ddd, MMM D'),
+        high: {
+          temp: day.temperatureHigh + '°F',
+          time: moment.unix(day.temperatureHighTime).format('LT')
+        },
+        low: {
+          temp: day.temperatureLow + '°F',
+          time: moment.unix(day.temperatureLowTime).format('LT')
+        },
+        conditions: day.summary,
+        precipitation: day.precipProbability,
+        sunriseTime: moment.unix(day.sunriseTime).format('LT'),
+        sunsetTime: moment.unix(day.sunsetTime).format('LT')
+      };
+    })
+    .slice(1);
 };
 
 export const tenDay = data => {
