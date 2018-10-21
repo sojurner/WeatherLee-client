@@ -1,0 +1,14 @@
+.nav-bar {
+}
+
+.nav-link {
+  font-family: Daybold;
+  color: rgb(154, 175, 175);
+  font-size: 3rem;
+  text-decoration-line: none;
+  margin: 1rem;
+}
+.nav-link:hover {
+  color: antiquewhite;
+  border-bottom: 2px solid rgb(181, 181, 181);
+}
