@@ -1,9 +1,5 @@
 .input-search {
   height: 5rem;
-  grid-template-columns: 1fr 1fr;
-  display: grid;
-  grid-column: 1 / 9;
-  grid-row: 2 / 4;
   align-self: center;
   justify-self: center;
   margin-left: 3rem;
@@ -13,15 +9,12 @@
 }
 
 .rendered-search {
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-column: 1 / 6;
-  grid-row: 1 / 2;
-  justify-self: start;
-  align-self: center;
-  margin: 0 0 8rem 2.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.search-box,
+.search-box {
 .rendered-search-box {
   background: #88acc1;
   border-radius: 10px;
