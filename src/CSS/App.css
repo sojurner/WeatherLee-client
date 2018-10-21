@@ -17,14 +17,6 @@
   color: rgb(244, 85, 0);
 }
 
-.current-weather {
-  font-size: 2rem;
-  font-family: daybold;
-  grid-column: 7 / 10;
-  grid-row: 1 / 4;
-  transition: 1s;
-}
-
 @keyframes morphingLogo {
   0% {
     filter: hue-rotate(-90deg);
@@ -37,103 +29,12 @@
   }
 }
 
-.current-weather-button {
-  font-family: daybold;
-  grid-row: 2 / 4;
-  height: 2rem;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
-  width: 8rem;
-  background-color: #6a8dc6;
-  align-self: center;
-  margin-bottom: 1rem;
-  padding-top: 0.2rem;
-  grid-column: 10 / 12;
-  justify-self: end;
-}
-
-.current-weather-button:hover {
-  animation: hueChange 4s linear infinite;
-  background-color: rgb(74, 96, 125);
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 2rem #6a8dc6;
-}
-
-.current {
-  font-family: daybold;
-}
-
-.current-location {
-  font-size: 4rem;
-  color: yellow;
-  grid-column: 4 / 9;
-  grid-row: 1 / 2;
-  align-self: start;
-  justify-self: end;
-  margin: 3rem 3rem 0 0;
-}
-
-.current-time {
-  font-size: 1.5rem;
-  grid-row: 1 / 4;
-  grid-column: 1 / 9;
-  color: #ef6a04;
-  align-self: center;
-  justify-self: center;
-}
-
-.current-temp {
-  animation: hueChange 4s linear infinite;
-  grid-row: 1 / 4;
-  grid-column: 1 / 9;
-  justify-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
-  font-size: 10rem;
-  color: greenyellow;
-  margin-bottom: 17rem;
-}
-
-.current-low {
-  grid-row: 2 / 3;
-  grid-column: 1 / 5;
-  margin-bottom: 8.5rem;
-  font-size: 4rem;
-  display: inline-block;
-  color: aqua;
-  justify-self: center;
-}
-
-.current-high {
-  grid-row: 2 / 3;
-  grid-column: 5 / 9;
-  font-size: 4rem;
-  display: inline-block;
-  color: red;
-  justify-self: center;
-  margin: 0 2rem 8.5rem 0;
-}
-
-.current-conditions {
-  color: rgb(198, 189, 189);
-  grid-row: 1 / 2;
-  grid-column: 6 / 9;
-  font-size: 2rem;
-  margin: 4rem 0 0 0;
-  justify-self: center;
-}
-
-.current-icon {
-  height: 6rem;
-  grid-row: 1 / 2;
-  grid-column: 8 / 9;
-  justify-self: center;
-  margin: 3rem 0 0 0;
-}
-
 .styles_closeIcon__1QwbI {
   display: none;
+}
+
+.styles_modal__gNwvD {
+  background-color: #585e67;
 }
 
 @media screen and (max-width: 1710px) {
