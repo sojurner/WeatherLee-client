@@ -36,7 +36,7 @@ class App extends Component {
   };
 
   getWeather = async search => {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, userLocation } = this.state;
     const location = navigator.geolocation.getCurrentPosition(
       async location => {
         const response = await fetch(
@@ -49,7 +49,6 @@ class App extends Component {
         console.log(x);
       }
     );
-    console.log(location);
   };
 
   setLocation = search => {
