@@ -50,7 +50,7 @@ class Search extends Component {
       }));
     }
 
-    if (e.keyCode === 40 && cursor < suggestedLocations.length - 1) {
+    if (e.keyCode === 40 && cursor <= suggestedLocations.length - 1) {
       this.setState(prevState => ({
         cursor: prevState.cursor + 1
       }));
