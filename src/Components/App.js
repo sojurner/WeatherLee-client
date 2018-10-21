@@ -8,7 +8,8 @@ import { CurrentWeather } from './CurrentWeather';
 import { TenDayTab } from './TenDayTab';
 import { SevenHourForecast } from './SevenHourForecast';
 import { TenDayForecast } from './TenDayForecast';
-import { currWeather, sevenHour, tenDay } from '../Helpers/DataScrape';
+import worldCities from '../Data/worldCities.json';
+import * as scrape from '../Helpers/DataScrape';
 
 class App extends Component {
   constructor() {
@@ -18,8 +19,8 @@ class App extends Component {
       latitude: 0,
       longitude: 0,
       currentWeather: {},
-      sevenHourForecast: [],
-      tenDayForecast: [],
+      daily: [],
+      weekly: [],
       currentWeatherClicked: true,
       sevenHourClicked: false,
       tenDayClicked: false,
