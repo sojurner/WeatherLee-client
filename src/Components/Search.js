@@ -7,8 +7,10 @@ class Search extends Component {
     super(props);
     this.state = {
       location: props.userLocation,
-      suggestedLocations: []
+      suggestedLocations: [],
+      cursor: 0
     };
+    this.textContent = React.createRef();
   }
 
   componentDidMount() {
