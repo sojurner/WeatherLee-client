@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import '../CSS/NavBar.css';
+
 export const NavBar = ({ openModal }) => {
   const navTabs = ['daily', 'weekly'];
   const navBar = navTabs.map((tab, index) => {
@@ -15,5 +17,5 @@ export const NavBar = ({ openModal }) => {
       </NavLink>
     );
   });
-  return <nav>{navBar}</nav>;
+  return <nav className="nav-bar">{navBar}</nav>;
 };
