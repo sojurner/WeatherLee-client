@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@sojurner/complete-me": "git+https://github.com/sojurner/Complete-me.git",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.22.2",
     "react": "^16.4.1",
+    "react-chartjs-2": "^2.7.4",
     "react-dom": "^16.4.1",
+    "react-responsive-modal": "^3.4.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "save-dev": "^2.0.0"
   },
