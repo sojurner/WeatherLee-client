@@ -59,6 +59,14 @@ class Search extends Component {
         cursor: prevState.cursor + 1
       }));
     }
+    if (e.keyCode === 13) {
+      const nodeList = Array.from(this.textContent.current.childNodes);
+      const matchingNode = nodeList.find(node => node.className === 'active');
+      const location = matchingNode.textContent;
+      this.resetState(location);
+    }
+  };
+
   render() {
     return (
       <div
