@@ -1,15 +1,15 @@
+import * as moment from 'moment';
+
 export const currWeather = data => {
-  const currDay = data.forecast.simpleforecast.forecastday.find(
-    currDay => currDay.period === 1
-  );
   const currDayObj = {
-    time: data.current_observation.observation_time,
-    location: data.current_observation.display_location.full,
-    current: data.current_observation.temp_f + "°F",
-    high: currDay.high.fahrenheit + "°F",
-    low: currDay.low.fahrenheit + "°F",
-    conditions: currDay.conditions,
-    icon: currDay.icon_url
+    current: data.currently.temperature + '°F',
+    time: moment.unix(data.currently.time).format('LT'),
+    high: data.daily.data[0].temperatureHigh + '°F',
+    low: data.daily.data[0].temperatureLow + '°F',
+    conditions: data.daily.data[0].summary,
+    precipitation: data.daily.data[0].precipProbability,
+    sunriseTime: moment.unix(data.daily.data[0].sunriseTime).format('LT'),
+    sunsetTime: moment.unix(data.daily.data[0].sunsetTime).format('LT')
   };
   return currDayObj;
 };
