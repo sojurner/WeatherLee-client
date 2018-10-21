@@ -39,13 +39,13 @@ export const daily = cityData => {
 export const hourly = cityData => {
   return cityData.hourly.data
     .map(hour => {
-    return {
+      return {
         time: moment.unix(hour.time).format('LT'),
         humidity: hour.humidity,
         temperature: hour.temperature,
         apparentTemperature: hour.apparentTemperature,
         precipitation: hour.precipProbability
-    };
+      };
     })
     .slice(1, 25);
 };
