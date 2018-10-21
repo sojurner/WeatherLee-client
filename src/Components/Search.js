@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import '../CSS/Search.css';
 import cities from '../Data/worldCitiesArray.json';
 
-import CityStateData from '../Algorithms/CityStateData';
-// const { Trie } = require('@sojurner/complete-me/lib');
-
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       location: props.userLocation,
-      suggestedLocations: []
+      suggestedLocations: [],
+      cursor: 0
     };
+    this.textContent = React.createRef();
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.cursor);
   }
 
   componentDidMount() {
@@ -23,7 +26,8 @@ class Search extends Component {
     const { value } = e.target;
     this.setState({
       location: value,
-      suggestedLocations: this.getSuggestions(value)
+      suggestedLocations: this.getSuggestions(value),
+      cursor: 0
     });
   };
 
@@ -45,64 +49,63 @@ class Search extends Component {
     return suggestion;
   };
 
-  // showSuggestions() {
-  //   if (!this.state.location) {
-  //     this.setState({ suggestedLocations: [] });
-  //   } else {
-  //     this.setState({
-  //       suggestedLocations: this.trie.suggest(this.state.location)
-  //     });
-  //   }
-  // }
+  handleKeyDown = e => {
+    console.log(e.keyCode);
+    const { cursor, suggestedLocations } = this.state;
+    if (e.keyCode === 38 && cursor > 0) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor - 1
+      }));
+    }
+
+    if (e.keyCode === 40 && cursor < suggestedLocations.length - 1) {
+      this.setState(prevState => ({
+        cursor: prevState.cursor + 1
+      }));
+    }
+    if (e.keyCode === 13) {
+      const nodeList = Array.from(this.textContent.current.childNodes);
+      const matchingNode = nodeList.find(node => node.className === 'active');
+      const location = matchingNode.textContent;
+      this.resetState(location);
+    }
+  };
+
+  resetState = location => {
+    this.props.setLocation(location);
+    this.setState({ location: '', suggestedLocations: [] });
+  };
 
   render() {
+    const { searched, setLocation } = this.props;
+    const { suggestedLocations, location, cursor } = this.state;
     return (
-      <div
-        className={!this.props.searched ? 'input-search' : 'rendered-search'}
-      >
+      <div className={!searched ? 'input-search' : 'rendered-search'}>
         <input
-          className={
-            !this.props.searched ? 'search-box' : 'rendered-search-box'
-          }
+          className={!searched ? 'search-box' : 'rendered-search-box'}
           type="text"
-          placeholder=" Enter city / zipcode"
+          placeholder=" Enter City"
           onChange={e => {
             this.updateVal(e);
           }}
+          onKeyDown={e => this.handleKeyDown(e)}
           value={this.state.location}
         />
-        <button
-          className={
-            !this.props.searched ? 'search-button' : 'rendered-search-button'
-          }
-          onClick={e => {
-            this.props.setLocation(this.state.location);
-            this.setState({ location: '' });
-          }}
-        >
-          Search
-        </button>
         <section
+          ref={this.textContent}
           className={
-            !this.props.searched
-              ? 'input-suggest-list'
-              : 'rendered-suggest-list-two'
+            !searched ? 'input-suggest-list' : 'rendered-suggest-list-two'
           }
         >
-          {this.state.suggestedLocations.map((location, i) => {
-            if (i < 3 && this.state.location.length > 1) {
+          {suggestedLocations.map((location, index) => {
+            if (index < 3 && location.length > 1) {
               return (
                 <p
                   className={
-                    !this.props.searched
-                      ? 'input-suggestions'
-                      : 'rendered-suggestions'
+                    cursor === index + 1 ? 'active' : 'input-suggestions'
                   }
-                  key={i}
-                  onClick={e => {
-                    this.props.setLocation(e.target.textContent);
-                    this.setState({ suggestedLocations: [], location: '' });
-                  }}
+                  key={`suggestions-${index}`}
+                  onClick={e => this.resetState(e.target.textContent)}
                 >
                   {location}
                 </p>

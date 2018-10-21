@@ -8,7 +8,8 @@ import { CurrentWeather } from './CurrentWeather';
 import { TenDayTab } from './TenDayTab';
 import { SevenHourForecast } from './SevenHourForecast';
 import { TenDayForecast } from './TenDayForecast';
-import { currWeather, sevenHour, tenDay } from '../Helpers/DataScrape';
+import worldCities from '../Data/worldCities.json';
+import * as scrape from '../Helpers/DataScrape';
 
 class App extends Component {
   constructor() {
@@ -18,8 +19,8 @@ class App extends Component {
       latitude: 0,
       longitude: 0,
       currentWeather: {},
-      sevenHourForecast: [],
-      tenDayForecast: [],
+      daily: [],
+      weekly: [],
       currentWeatherClicked: true,
       sevenHourClicked: false,
       tenDayClicked: false,
@@ -28,14 +29,12 @@ class App extends Component {
     };
   }
 
-  componentDidMount = () => {
-    // if (localStorage.getItem('Location')) {
-    this.getWeather(localStorage.getItem('Location'));
-    // }
+  componentDidUpdate = () => {
+    console.log(this.state);
   };
 
   getWeather = async search => {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, userLocation } = this.state;
     const location = navigator.geolocation.getCurrentPosition(
       async location => {
         const response = await fetch(
@@ -48,35 +47,36 @@ class App extends Component {
         console.log(x);
       }
     );
-    console.log(location);
   };
 
-  setLocation = search => {
-    this.setState({ userLocation: search });
-    this.getWeather(search);
-  };
+  setLocation = async search => {
+    const matchingCity = worldCities.find(city => city.city === search);
 
-  changeWeatherClicked = (current, seven, ten) => {
+    const response = await fetch(
+      `/api/darksky?latitude=${matchingCity.lat}&longitude=${matchingCity.lng}`,
+      null
+    );
+    const result = await response.json();
+    console.log(result);
     this.setState({
-      currentWeatherClicked: current,
-      sevenHourClicked: seven,
-      tenDayClicked: ten
+      currentWeather: scrape.currWeather(result),
+      weekly: scrape.daily(result),
+      daily: scrape.hourly(result),
+      searched: true
     });
   };
 
   render() {
-    if (this.state.searched === false) {
-      return (
-        <div className="input-container rendered-container">
-          <Welcome />
-          <Search
-            userLocation={this.state.userLocation}
-            setLocation={this.setLocation}
-          />
-        </div>
-      );
-    }
-    return (
+    const { currentWeather, userLocation } = this.state;
+    return !this.state.searched ? (
+      <div className="input-container rendered-container">
+        <Welcome />
+        <Search
+          userLocation={this.state.userLocation}
+          setLocation={this.setLocation}
+        />
+      </div>
+    ) : (
       <div className="input-container">
         <WelcomeRendered />
         <Search
@@ -85,16 +85,19 @@ class App extends Component {
           setLocation={this.setLocation}
         />
         {this.state.searched && (
-          <CurrentWeather currentWeather={this.state.currentWeather} />
+          <CurrentWeather
+            currentWeather={currentWeather}
+            userLocation={userLocation}
+          />
         )}
-        <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
+        {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (
           <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />
         )}
         {this.state.tenDayClicked && (
           <TenDayForecast tenDayForecast={this.state.tenDayForecast} />
-        )}
+        )} */}
       </div>
     );
   }

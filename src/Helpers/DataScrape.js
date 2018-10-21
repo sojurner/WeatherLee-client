@@ -1,43 +1,51 @@
+import * as moment from 'moment';
+
 export const currWeather = data => {
-  const currDay = data.forecast.simpleforecast.forecastday.find(
-    currDay => currDay.period === 1
-  );
   const currDayObj = {
-    time: data.current_observation.observation_time,
-    location: data.current_observation.display_location.full,
-    current: data.current_observation.temp_f + "°F",
-    high: currDay.high.fahrenheit + "°F",
-    low: currDay.low.fahrenheit + "°F",
-    conditions: currDay.conditions,
-    icon: currDay.icon_url
+    current: data.currently.temperature + '°F',
+    time: moment.unix(data.currently.time).format('LT'),
+    high: data.daily.data[0].temperatureHigh + '°F',
+    low: data.daily.data[0].temperatureLow + '°F',
+    conditions: data.daily.data[0].summary,
+    precipitation: data.daily.data[0].precipProbability,
+    sunriseTime: moment.unix(data.daily.data[0].sunriseTime).format('LT'),
+    sunsetTime: moment.unix(data.daily.data[0].sunsetTime).format('LT')
   };
   return currDayObj;
 };
 
-export const sevenHour = response => {
-  return response.hourly_forecast
-    .filter(obj => Object.values(obj))
-    .reduce((sevenHour, hour, i) => {
-      if (i < 8) {
-        sevenHour.push({
-          time: hour.FCTTIME.civil,
-          temp: Math.floor(hour.temp.english) + "°F",
-          condition: hour.condition,
-          icon_url: hour.icon_url
-        });
-      }
-      return sevenHour;
-    }, []);
+export const daily = cityData => {
+  return cityData.daily.data
+    .map(day => {
+      return {
+        time: moment.unix(day.time).format('ddd, MMM D'),
+        high: {
+          temp: day.temperatureHigh + '°F',
+          time: moment.unix(day.temperatureHighTime).format('LT')
+        },
+        low: {
+          temp: day.temperatureLow + '°F',
+          time: moment.unix(day.temperatureLowTime).format('LT')
+        },
+        conditions: day.summary,
+        precipitation: day.precipProbability,
+        sunriseTime: moment.unix(day.sunriseTime).format('LT'),
+        sunsetTime: moment.unix(day.sunsetTime).format('LT')
+      };
+    })
+    .slice(1);
 };
 
-export const tenDay = data => {
-  return data.forecast.simpleforecast.forecastday.map(obj => {
-    return {
-      day: obj.date.weekday,
-      date: obj.date.month + "/" + obj.date.day + "/" + obj.date.year,
-      high: obj.high.fahrenheit + "°F",
-      low: obj.low.fahrenheit + "°F",
-      icon: obj.icon_url
-    };
-  });
+export const hourly = cityData => {
+  return cityData.hourly.data
+    .map(hour => {
+      return {
+        time: moment.unix(hour.time).format('LT'),
+        humidity: hour.humidity,
+        temperature: hour.temperature,
+        apparentTemperature: hour.apparentTemperature,
+        precipitation: hour.precipProbability
+      };
+    })
+    .slice(1, 25);
 };

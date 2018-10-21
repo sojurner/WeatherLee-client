@@ -5,7 +5,7 @@
   "dependencies": {
     "@sojurner/complete-me": "git+https://github.com/sojurner/Complete-me.git",
     "isomorphic-fetch": "^2.2.1",
-    "momentjs": "^2.0.0",
+    "moment": "^2.22.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
