@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import '../CSS/App.css';
-import Welcome from './Welcome';
-import WelcomeRendered from './WelcomeRendered';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Search from './Search';
-import { SevenHourTab } from './SevenHourTab';
-import { CurrentWeather } from './CurrentWeather';
-import { TenDayTab } from './TenDayTab';
-import { SevenHourForecast } from './SevenHourForecast';
-import { TenDayForecast } from './TenDayForecast';
-import worldCities from '../Data/worldCities.json';
-import * as scrape from '../Helpers/DataScrape';
 import { fetchWeatherData } from '../Helpers/apiCalls';
+import * as scrape from '../Helpers/DataScrape';
+import ContentRoutes from './ContentRoutes';
+import worldCities from '../Data/worldCities.json';
+
+import '../CSS/App.css';
 
 class App extends Component {
   constructor() {
