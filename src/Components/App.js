@@ -10,6 +10,7 @@ import { SevenHourForecast } from './SevenHourForecast';
 import { TenDayForecast } from './TenDayForecast';
 import worldCities from '../Data/worldCities.json';
 import * as scrape from '../Helpers/DataScrape';
+import { fetchWeatherData } from '../Helpers/apiCalls';
 
 class App extends Component {
   constructor() {
