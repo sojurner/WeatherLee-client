@@ -41,12 +41,13 @@ class App extends Component {
 
   setLocation = async search => {
     const matchingCity = worldCities.find(city => city.city === search);
+    const userLocation = `${matchingCity.city}, ${matchingCity.country} `;
     const weatherData = await fetchWeatherData(matchingCity, 'inputLocation');
     this.setState({
-      currentWeather: scrape.currWeather(weatherData),
+      Current: scrape.currWeather(weatherData),
       weekly: scrape.daily(weatherData),
       daily: scrape.hourly(weatherData),
-      searched: true
+      userLocation
     });
   };
 
