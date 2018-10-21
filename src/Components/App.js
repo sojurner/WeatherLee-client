@@ -13,15 +13,9 @@ class App extends Component {
     super();
     this.state = {
       userLocation: '',
-      latitude: 0,
-      longitude: 0,
-      currentWeather: {},
+      Current: {},
       daily: [],
       weekly: [],
-      currentWeatherClicked: true,
-      sevenHourClicked: false,
-      tenDayClicked: false,
-      searched: false,
       error: false
     };
   }
