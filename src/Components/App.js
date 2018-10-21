@@ -37,31 +37,18 @@ class App extends Component {
     const { latitude, longitude, userLocation } = this.state;
     const location = navigator.geolocation.getCurrentPosition(
       async location => {
-        const response = await fetch(
-          `/api/darksky?latitude=${location.coords.latitude}&longitude=${
-            location.coords.longitude
-          }`,
-          null
-        );
-        const x = await response.json();
-        console.log(x);
+        await fetchWeatherData(location, 'geoLocation');
       }
     );
   };
 
   setLocation = async search => {
     const matchingCity = worldCities.find(city => city.city === search);
-
-    const response = await fetch(
-      `/api/darksky?latitude=${matchingCity.lat}&longitude=${matchingCity.lng}`,
-      null
-    );
-    const result = await response.json();
-    console.log(result);
+    const weatherData = await fetchWeatherData(matchingCity, 'inputLocation');
     this.setState({
-      currentWeather: scrape.currWeather(result),
-      weekly: scrape.daily(result),
-      daily: scrape.hourly(result),
+      currentWeather: scrape.currWeather(weatherData),
+      weekly: scrape.daily(weatherData),
+      daily: scrape.hourly(weatherData),
       searched: true
     });
   };
