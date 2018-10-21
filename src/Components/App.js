@@ -51,16 +51,20 @@ class App extends Component {
     );
   };
 
-  setLocation = search => {
-    this.setState({ userLocation: search });
-    this.getWeather(search);
-  };
+  setLocation = async search => {
+    const matchingCity = worldCities.find(city => city.city === search);
 
-  changeWeatherClicked = (current, seven, ten) => {
+    const response = await fetch(
+      `/api/darksky?latitude=${matchingCity.lat}&longitude=${matchingCity.lng}`,
+      null
+    );
+    const result = await response.json();
+    console.log(result);
     this.setState({
-      currentWeatherClicked: current,
-      sevenHourClicked: seven,
-      tenDayClicked: ten
+      currentWeather: scrape.currWeather(result),
+      weekly: scrape.daily(result),
+      daily: scrape.hourly(result),
+      searched: true
     });
   };
 
