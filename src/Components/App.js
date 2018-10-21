@@ -29,10 +29,8 @@ class App extends Component {
     };
   }
 
-  componentDidMount = () => {
-    // if (localStorage.getItem('Location')) {
-    this.getWeather(localStorage.getItem('Location'));
-    // }
+  componentDidUpdate = () => {
+    console.log(this.state);
   };
 
   getWeather = async search => {
@@ -71,13 +69,13 @@ class App extends Component {
   render() {
     const { currentWeather, userLocation } = this.state;
     return !this.state.searched ? (
-        <div className="input-container rendered-container">
-          <Welcome />
-          <Search
-            userLocation={this.state.userLocation}
-            setLocation={this.setLocation}
-          />
-        </div>
+      <div className="input-container rendered-container">
+        <Welcome />
+        <Search
+          userLocation={this.state.userLocation}
+          setLocation={this.setLocation}
+        />
+      </div>
     ) : (
       <div className="input-container">
         <WelcomeRendered />
