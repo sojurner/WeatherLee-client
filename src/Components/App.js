@@ -69,8 +69,8 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.searched === false) {
-      return (
+    const { currentWeather, userLocation } = this.state;
+    return !this.state.searched ? (
         <div className="input-container rendered-container">
           <Welcome />
           <Search
@@ -78,9 +78,7 @@ class App extends Component {
             setLocation={this.setLocation}
           />
         </div>
-      );
-    }
-    return (
+    ) : (
       <div className="input-container">
         <WelcomeRendered />
         <Search
@@ -89,16 +87,19 @@ class App extends Component {
           setLocation={this.setLocation}
         />
         {this.state.searched && (
-          <CurrentWeather currentWeather={this.state.currentWeather} />
+          <CurrentWeather
+            currentWeather={currentWeather}
+            userLocation={userLocation}
+          />
         )}
-        <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
+        {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (
           <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />
         )}
         {this.state.tenDayClicked && (
           <TenDayForecast tenDayForecast={this.state.tenDayForecast} />
-        )}
+        )} */}
       </div>
     );
   }
