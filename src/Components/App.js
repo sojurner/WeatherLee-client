@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
-import '../CSS/App.css';
-import Welcome from './Welcome';
-import WelcomeRendered from './WelcomeRendered';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Search from './Search';
-import { SevenHourTab } from './SevenHourTab';
-import { CurrentWeather } from './CurrentWeather';
-import { TenDayTab } from './TenDayTab';
-import { SevenHourForecast } from './SevenHourForecast';
-import { TenDayForecast } from './TenDayForecast';
-import worldCities from '../Data/worldCities.json';
+import { fetchWeatherData } from '../Helpers/apiCalls';
 import * as scrape from '../Helpers/DataScrape';
+import ContentRoutes from './ContentRoutes';
+import worldCities from '../Data/worldCities.json';
+
+import '../CSS/App.css';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       userLocation: '',
-      latitude: 0,
-      longitude: 0,
-      currentWeather: {},
+      Current: {},
       daily: [],
       weekly: [],
-      currentWeatherClicked: true,
-      sevenHourClicked: false,
-      tenDayClicked: false,
-      searched: false,
       error: false
     };
   }
@@ -37,59 +28,40 @@ class App extends Component {
     const { latitude, longitude, userLocation } = this.state;
     const location = navigator.geolocation.getCurrentPosition(
       async location => {
-        const response = await fetch(
-          `/api/darksky?latitude=${location.coords.latitude}&longitude=${
-            location.coords.longitude
-          }`,
-          null
-        );
-        const x = await response.json();
-        console.log(x);
+        await fetchWeatherData(location, 'geoLocation');
       }
     );
   };
 
   setLocation = async search => {
     const matchingCity = worldCities.find(city => city.city === search);
-
-    const response = await fetch(
-      `/api/darksky?latitude=${matchingCity.lat}&longitude=${matchingCity.lng}`,
-      null
-    );
-    const result = await response.json();
-    console.log(result);
+    const userLocation = `${matchingCity.city}, ${matchingCity.country} `;
+    const weatherData = await fetchWeatherData(matchingCity, 'inputLocation');
     this.setState({
-      currentWeather: scrape.currWeather(result),
-      weekly: scrape.daily(result),
-      daily: scrape.hourly(result),
-      searched: true
+      Current: scrape.currWeather(weatherData),
+      weekly: scrape.daily(weatherData),
+      daily: scrape.hourly(weatherData),
+      userLocation
     });
   };
 
   render() {
-    const { currentWeather, userLocation } = this.state;
-    return !this.state.searched ? (
-      <div className="input-container rendered-container">
-        <Welcome />
-        <Search
-          userLocation={this.state.userLocation}
-          setLocation={this.setLocation}
-        />
-      </div>
-    ) : (
-      <div className="input-container">
-        <WelcomeRendered />
-        <Search
-          searched={this.state.searched}
-          userLocation={this.state.userLocation}
-          setLocation={this.setLocation}
-        />
-        {this.state.searched && (
-          <CurrentWeather
-            currentWeather={currentWeather}
+    const { Current, userLocation, weekly, daily } = this.state;
+    return (
+      <Router>
+        <div
+          className={
+            !userLocation
+              ? 'input-container rendered-container'
+              : 'input-container'
+          }
+        >
+          <ContentRoutes
+            weather={{ Current, weekly, daily }}
             userLocation={userLocation}
           />
-        )}
+          <Search userLocation={userLocation} setLocation={this.setLocation} />
+
         {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (

@@ -3,11 +3,11 @@ import * as moment from 'moment';
 export const currWeather = data => {
   const currDayObj = {
     current: data.currently.temperature + '°F',
-    time: moment.unix(data.currently.time).format('LT'),
+    time: moment.unix(data.currently.time).format('ddd - MMM D, LT'),
     high: data.daily.data[0].temperatureHigh + '°F',
     low: data.daily.data[0].temperatureLow + '°F',
     conditions: data.daily.data[0].summary,
-    precipitation: data.daily.data[0].precipProbability,
+    precipitation: data.daily.data[0].precipProbability * 100 + '%',
     sunriseTime: moment.unix(data.daily.data[0].sunriseTime).format('LT'),
     sunsetTime: moment.unix(data.daily.data[0].sunsetTime).format('LT')
   };
@@ -28,7 +28,7 @@ export const daily = cityData => {
           time: moment.unix(day.temperatureLowTime).format('LT')
         },
         conditions: day.summary,
-        precipitation: day.precipProbability,
+        precipitation: day.precipProbability * 100 + '%',
         sunriseTime: moment.unix(day.sunriseTime).format('LT'),
         sunsetTime: moment.unix(day.sunsetTime).format('LT')
       };
@@ -41,10 +41,10 @@ export const hourly = cityData => {
     .map(hour => {
       return {
         time: moment.unix(hour.time).format('LT'),
-        humidity: hour.humidity,
-        temperature: hour.temperature,
-        apparentTemperature: hour.apparentTemperature,
-        precipitation: hour.precipProbability
+        humidity: hour.humidity + '%',
+        temperature: hour.temperature + '°F',
+        apparentTemperature: hour.apparentTemperature + '°F',
+        precipitation: hour.precipProbability * 100 + '%'
       };
     })
     .slice(1, 25);
