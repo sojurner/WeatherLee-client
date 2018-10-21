@@ -51,29 +51,22 @@ class App extends Component {
   };
 
   render() {
-    const { currentWeather, userLocation } = this.state;
-    return !this.state.searched ? (
-      <div className="input-container rendered-container">
-        <Welcome />
-        <Search
-          userLocation={this.state.userLocation}
-          setLocation={this.setLocation}
-        />
-      </div>
-    ) : (
-      <div className="input-container">
-        <WelcomeRendered />
-        <Search
-          searched={this.state.searched}
-          userLocation={this.state.userLocation}
-          setLocation={this.setLocation}
-        />
-        {this.state.searched && (
-          <CurrentWeather
-            currentWeather={currentWeather}
+    const { Current, userLocation, weekly, daily } = this.state;
+    return (
+      <Router>
+        <div
+          className={
+            !userLocation
+              ? 'input-container rendered-container'
+              : 'input-container'
+          }
+        >
+          <ContentRoutes
+            weather={{ Current, weekly, daily }}
             userLocation={userLocation}
           />
-        )}
+          <Search userLocation={userLocation} setLocation={this.setLocation} />
+
         {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (
