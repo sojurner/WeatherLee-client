@@ -3,7 +3,7 @@ import * as moment from 'moment';
 export const currWeather = data => {
   const currDayObj = {
     current: data.currently.temperature + '°F',
-    time: moment.unix(data.currently.time).format('LT'),
+    time: moment.unix(data.currently.time).format('ddd - MMM D, LT'),
     high: data.daily.data[0].temperatureHigh + '°F',
     low: data.daily.data[0].temperatureLow + '°F',
     conditions: data.daily.data[0].summary,
