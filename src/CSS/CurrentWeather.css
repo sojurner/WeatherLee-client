@@ -1,10 +1,10 @@
 .current {
-  font-family: daybold;
+  font-family: neat;
 }
 
 .current-weather {
   font-size: 2rem;
-  font-family: daybold;
+  font-family: neat;
   grid-column: 7 / 10;
   grid-row: 1 / 4;
   transition: 1s;

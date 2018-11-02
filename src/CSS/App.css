@@ -3,6 +3,16 @@
   src: url(../fonts/Daybold.otf);
 }
 
+@font-face {
+  font-family: neat;
+  src: url(../fonts/KGNeatlyPrinted.ttf);
+}
+
+@font-face {
+  font-family: rale;
+  src: url(../fonts/Raleway-Regular.ttf);
+}
+
 .input-container {
   background-image: url(http://bestanimations.com/Nature/winter/winter-snow-nature-animated-gif-11.gif);
   background-repeat: no-repeat;
@@ -35,6 +45,7 @@
 
 .styles_modal__gNwvD {
   background-color: #585e67;
+  border-radius: 0.5rem;
 }
 
 @media screen and (max-width: 1710px) {
@@ -42,35 +53,28 @@
     font-size: 6rem;
     margin: 4rem 0 0 7rem;
   }
-
-  .rendered-search {
-    grid-column: 1 / 5;
-    justify-self: start;
-  }
 }
 
 @media screen and (max-width: 1470px) {
-  .rendered-search-button {
-    margin: 2rem 0 0 0;
-  }
-
-  .rendered-search {
-    margin-top: 2rem;
-  }
-
   .input-rendered-welcome {
     display: none;
-  }
-}
-
-@media screen and (max-width: 1370px) {
-  .rendered-search {
-    grid-column: 1 / 6;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .input-title {
     font-size: 10rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(157, 158, 158, 0.367);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(157, 158, 158, 0.134);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(157, 158, 158, 0);
   }
 }
