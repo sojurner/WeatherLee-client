@@ -18,7 +18,7 @@ export const daily = cityData => {
   return cityData.daily.data
     .map(day => {
       return {
-        time: moment.unix(day.time).format('ddd, MMM D'),
+        time: moment.unix(day.time).format('ddd'),
         high: {
           temp: day.temperatureHigh + '°F',
           time: moment.unix(day.temperatureHighTime).format('LT')

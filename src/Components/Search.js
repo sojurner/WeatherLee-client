@@ -42,7 +42,6 @@ class Search extends Component {
   };
 
   handleKeyDown = e => {
-    console.log(e.keyCode);
     const { cursor, suggestedLocations } = this.state;
     if (e.keyCode === 38 && cursor > 0) {
       this.setState(prevState => ({
@@ -90,7 +89,7 @@ class Search extends Component {
           }
         >
           {suggestedLocations.map((location, index) => {
-            if (index < 3 && location.length > 1) {
+            if (index < 4 && location.length > 1) {
               return (
                 <p
                   className={

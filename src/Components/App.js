@@ -24,14 +24,23 @@ class App extends Component {
     console.log(this.state);
   };
 
-  getWeather = async search => {
-    const { latitude, longitude, userLocation } = this.state;
-    const location = navigator.geolocation.getCurrentPosition(
-      async location => {
-        await fetchWeatherData(location, 'geoLocation');
-      }
-    );
-  };
+  componentDidMount() {
+    // this.getLocation();
+  }
+
+  // getLocation = async () => {
+  //   await navigator.geolocation.getCurrentPosition(async location => {
+  //     const weatherData = await fetchWeatherData(location, 'geoLocation');
+  //     const { timezone } = weatherData;
+  //     const userLocation = `${timezone.slice(8)}, ${timezone.slice(0, 7)} `;
+  //     this.setState({
+  //       Current: scrape.currWeather(weatherData),
+  //       weekly: scrape.daily(weatherData),
+  //       daily: scrape.hourly(weatherData),
+  //       userLocation
+  //     });
+  //   });
+  // };
 
   setLocation = async search => {
     const matchingCity = worldCities.find(city => city.city === search);
@@ -62,7 +71,7 @@ class App extends Component {
           />
           <Search userLocation={userLocation} setLocation={this.setLocation} />
 
-        {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
+          {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (
           <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />
@@ -70,7 +79,8 @@ class App extends Component {
         {this.state.tenDayClicked && (
           <TenDayForecast tenDayForecast={this.state.tenDayForecast} />
         )} */}
-      </div>
+        </div>
+      </Router>
     );
   }
 }

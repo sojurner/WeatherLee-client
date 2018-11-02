@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import Modal from 'react-responsive-modal';
 
 import { Welcome } from './Welcome';
-import { WeatherCard } from './WeatherCard';
+import WeatherCard from './WeatherCard';
 
 class ContentRoutes extends Component {
   constructor() {
@@ -31,7 +31,7 @@ class ContentRoutes extends Component {
           path={`/${route}`}
           render={() => {
             return (
-              <Modal open={this.state.open} center>
+              <Modal open={this.state.open} onClose={this.onCloseModal} center>
                 <WeatherCard
                   weather={weather[route]}
                   closeModal={this.onCloseModal}
