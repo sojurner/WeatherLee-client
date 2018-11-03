@@ -1,40 +1,15 @@
-# Weathrly
+# Weatherlee
 
-A responsive weather forecasting application in React pulling from the Weather Underground API.
+Weather Application.  View weather from cities all over the world.  
 
-Wireframes: 
-![weathrly sketch](./IMG_0130.jpg)
+## Set-up
+Clone down this Repo.
 
-To install the dependencies:
+Install dependencies: `npm install`
 
-```
-npm install
-```
+Start development server: `npm start`
 
-To fire up a development server:
+To run tests in Node: `npm test`
 
-```
-npm start
-```
+visit: http://localhost:3001/
 
-Once the server is running, you can visit:
-
-* `http://localhost:8080/webpack-dev-server/` to run your application.
-* `http://localhost:8080/webpack-dev-server/test.html` to run your test suite in the browser.
-
-To build the static files:
-
-```js
-npm run build
-```
-To install the auto-search functionality:
-
-```js
-npm install --save https://github.com/wagasky/complete-me.git
-```
-
-To run tests in Node:
-
-```js
-npm test
-```
