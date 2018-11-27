@@ -16,15 +16,15 @@
 
 ### Set-up
 
-Clone down this Repo.
+- Clone down this Repo.
 
-Install dependencies: `npm install`
+- Install dependencies: `npm install`
 
-Start development server: `npm start`
+- Start development server: `npm start`
 
-Visit [localhost:3000](http://localhost:3000/) in your browser
+- Visit [localhost:3000](http://localhost:3000/) in your browser
 
-To run tests in Node: `npm test`
+- To run tests in Node: `npm test`
 
 
 ### Contributors
