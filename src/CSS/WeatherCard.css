@@ -12,7 +12,7 @@
 
 .coverflow__cover__25-7e {
   position: absolute;
-  top: 3rem;
+  top: 3.2rem;
   box-shadow: none;
 }
 
@@ -35,6 +35,10 @@
 .coverflow__container__1P-xE {
   width: 44rem;
   height: 12.7rem;
+}
+
+.coverflow__text__39hqd {
+  display: none;
 }
 
 div:focus {
