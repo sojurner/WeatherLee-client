@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Search from './Search';
-import { fetchWeatherData } from '../Helpers/apiCalls';
+import { Welcome } from './Welcome';
+import { fetchWeatherData, fetchLocationPic } from '../Helpers/apiCalls';
 import * as scrape from '../Helpers/DataScrape';
-import ContentRoutes from './ContentRoutes';
 import worldCities from '../Data/worldCities.json';
 
 import '../CSS/App.css';
@@ -13,6 +12,7 @@ class App extends Component {
     super();
     this.state = {
       userLocation: '',
+      background: '',
       Current: {},
       daily: [],
       weekly: [],
@@ -20,58 +20,61 @@ class App extends Component {
     };
   }
 
-  componentDidUpdate = () => {
-    console.log(this.state);
-  };
-
   componentDidMount() {
-    // this.getLocation();
+    this.getLocation();
   }
 
-  // getLocation = async () => {
-  //   await navigator.geolocation.getCurrentPosition(async location => {
-  //     const weatherData = await fetchWeatherData(location, 'geoLocation');
-  //     const { timezone } = weatherData;
-  //     const userLocation = `${timezone.slice(8)}, ${timezone.slice(0, 7)} `;
-  //     this.setState({
-  //       Current: scrape.currWeather(weatherData),
-  //       weekly: scrape.daily(weatherData),
-  //       daily: scrape.hourly(weatherData),
-  //       userLocation
-  //     });
-  //   });
-  // };
+  getLocation = async () => {
+    await navigator.geolocation.getCurrentPosition(async location => {
+      const weatherData = await fetchWeatherData(location, 'geoLocation');
+      const { timezone } = weatherData;
+      const userLocation = `${timezone.slice(8)} `;
+      const background = await fetchLocationPic(weatherData.currently.icon);
+      this.setState({
+        Current: scrape.currWeather(weatherData),
+        weekly: scrape.daily(weatherData),
+        daily: scrape.hourly(weatherData),
+        userLocation,
+        background
+      });
+    });
+  };
 
   setLocation = async search => {
     const matchingCity = worldCities.find(city => city.city === search);
-    const userLocation = `${matchingCity.city}, ${matchingCity.country} `;
+    const userLocation = `${matchingCity.city}`;
     const weatherData = await fetchWeatherData(matchingCity, 'inputLocation');
+    const background = await fetchLocationPic(weatherData.currently.icon);
     this.setState({
       Current: scrape.currWeather(weatherData),
       weekly: scrape.daily(weatherData),
       daily: scrape.hourly(weatherData),
-      userLocation
+      userLocation,
+      background
     });
   };
 
   render() {
-    const { Current, userLocation, weekly, daily } = this.state;
-    return (
-      <Router>
-        <div
-          className={
-            !userLocation
-              ? 'input-container rendered-container'
-              : 'input-container'
-          }
-        >
-          <ContentRoutes
-            weather={{ Current, weekly, daily }}
-            userLocation={userLocation}
-          />
-          <Search userLocation={userLocation} setLocation={this.setLocation} />
+    const { Current, userLocation, weekly, daily, background } = this.state;
 
-          {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
+    return (
+      <div
+        className={
+          !userLocation
+            ? 'input-container rendered-container'
+            : 'input-container'
+        }
+      >
+        {background && <img className="background-img" src={background} />}
+        <Welcome
+          userLocation={userLocation}
+          daily={daily}
+          weekly={weekly}
+          current={Current}
+        />
+        <Search userLocation={userLocation} setLocation={this.setLocation} />
+
+        {/* <SevenHourTab changeWeatherClicked={this.changeWeatherClicked} />
         <TenDayTab changeWeatherClicked={this.changeWeatherClicked} />
         {this.state.sevenHourClicked && (
           <SevenHourForecast sevenHourForecast={this.state.sevenHourForecast} />
@@ -79,8 +82,7 @@ class App extends Component {
         {this.state.tenDayClicked && (
           <TenDayForecast tenDayForecast={this.state.tenDayForecast} />
         )} */}
-        </div>
-      </Router>
+      </div>
     );
   }
 }
