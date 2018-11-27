@@ -2,16 +2,22 @@ import * as moment from 'moment';
 
 export const currWeather = data => {
   const currDayObj = {
-    current: data.currently.temperature + '°F',
+    current: floorNumbers(data.currently.temperature) + '°F',
     time: moment.unix(data.currently.time).format('ddd - MMM D, LT'),
-    high: data.daily.data[0].temperatureHigh + '°F',
-    low: data.daily.data[0].temperatureLow + '°F',
+    high: floorNumbers(data.daily.data[0].temperatureHigh) + '°',
+    low: floorNumbers(data.daily.data[0].temperatureLow) + '°',
     conditions: data.daily.data[0].summary,
-    precipitation: data.daily.data[0].precipProbability * 100 + '%',
+    precipitation:
+      floorNumbers(data.daily.data[0].precipProbability) * 100 + '%',
     sunriseTime: moment.unix(data.daily.data[0].sunriseTime).format('LT'),
-    sunsetTime: moment.unix(data.daily.data[0].sunsetTime).format('LT')
+    sunsetTime: moment.unix(data.daily.data[0].sunsetTime).format('LT'),
+    icon: data.currently.icon
   };
   return currDayObj;
+};
+
+const floorNumbers = number => {
+  return Math.floor(number);
 };
 
 export const daily = cityData => {
@@ -20,11 +26,11 @@ export const daily = cityData => {
       return {
         time: moment.unix(day.time).format('ddd'),
         high: {
-          temp: day.temperatureHigh + '°F',
+          temp: day.temperatureHigh + '°',
           time: moment.unix(day.temperatureHighTime).format('LT')
         },
         low: {
-          temp: day.temperatureLow + '°F',
+          temp: day.temperatureLow + '°',
           time: moment.unix(day.temperatureLowTime).format('LT')
         },
         conditions: day.summary,
@@ -48,4 +54,9 @@ export const hourly = cityData => {
       };
     })
     .slice(1, 25);
+};
+
+export const scrapePhoto = data => {
+  const randPhoto = data.hits[Math.floor(Math.random() * data.hits.length)];
+  return randPhoto.largeImageURL;
 };

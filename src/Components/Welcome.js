@@ -1,17 +1,17 @@
 import React from 'react';
 import '../CSS/Welcome.css';
-import { NavBar } from './NavBar';
+import WeatherContainer from './WeatherContainer';
 import { CurrentWeather } from './CurrentWeather';
 
-export const Welcome = ({ userLocation, current, openModal }) => {
+export const Welcome = ({ userLocation, current, daily, weekly }) => {
   return !userLocation ? (
     <div className="welcome-title">
       <h1 className="input-welcome">WeatherLy</h1>
     </div>
   ) : (
     <div className="navigation">
-      <NavBar openModal={openModal} />
       <CurrentWeather currentWeather={current} userLocation={userLocation} />
+      <WeatherContainer daily={daily} weekly={weekly} />
     </div>
   );
 };

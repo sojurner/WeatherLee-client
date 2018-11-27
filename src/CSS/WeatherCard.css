@@ -8,7 +8,68 @@
 
 .weather-card {
   height: 10rem;
-  width: 10rem;
+}
+
+.coverflow__cover__25-7e {
+  position: absolute;
+  top: 3rem;
+  box-shadow: none;
+}
+
+.coverflow__cover__25-7e:hover {
+  background-color: #bababa1b;
+}
+
+.coverflow__stage__14oqC {
+  height: 5rem;
+}
+
+.coverflow__text__39hqd {
+  background: none;
+}
+
+.coverflow__figure__3bk_C {
+  height: 10rem;
+}
+
+.coverflow__container__1P-xE {
+  width: 44rem;
+  height: 12.7rem;
+}
+
+div:focus {
+  outline: 0;
+}
+
+.hour-time,
+.day-time {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  width: 5rem;
+  margin: 1rem 1rem 0.5rem;
+  border-radius: 0.5rem;
+  color: #3e3e3e;
+  text-shadow: 1px 1px rgb(140, 140, 140);
+  background-color: #bababa;
+}
+
+.day-time {
+  width: 3.5rem;
+}
+
+.hour-temp,
+.day-high,
+.day-low {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 2rem;
+  width: 5.2rem;
+  padding-left: 0.3rem;
+  border-radius: 0.5rem;
+  color: #545454;
+  margin: 0 auto 0 auto;
+  text-shadow: 1px 1px rgb(140, 140, 140);
+  background-color: #d5d5d5;
 }
 
 .link {

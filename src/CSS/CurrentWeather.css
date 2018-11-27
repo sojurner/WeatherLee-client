@@ -37,7 +37,6 @@
 
 .down-link-short-1a,
 .down-link-short-1b,
-.down-link-short-2,
 .down-link-short-3a,
 .down-link-short-3b,
 .down-link-short-3c,
@@ -59,13 +58,6 @@
 
 .down-link-short-1b {
   right: 10rem;
-}
-
-.down-link-short-2 {
-  height: 2.25rem;
-  right: 10rem;
-  z-index: 11;
-  top: 14.3rem;
 }
 
 .down-link-short-3c,
@@ -131,12 +123,13 @@
 .right-link-short-1,
 .right-link-short-2 {
   height: 0.5rem;
-  width: 3.6rem;
+  width: 5.15rem;
   border-top: 6px solid rgb(80, 80, 80);
   border-bottom: 6px solid rgb(80, 80, 80);
   background-color: rgb(182, 182, 182);
   position: absolute;
-  top: 19.7rem;
+  z-index: 19;
+  top: 18.5rem;
 }
 
 .horizontal-bottom-1 {
@@ -188,9 +181,9 @@
   justify-self: start;
   align-self: end;
   font-size: 3.5rem;
-  color: rgb(48, 26, 26);
+  color: rgb(194, 194, 194);
   margin: 0 0 1.7rem 0.5rem;
-  background-color: rgb(182, 182, 182);
+  background-color: rgba(115, 115, 115, 0.9);
   border-radius: 0.5rem;
   border: 6px solid rgb(80, 80, 80);
   padding: 0.5rem;
@@ -205,7 +198,8 @@
   border-radius: 0.5rem;
   width: 7.5rem;
   margin: 0 0 0 0.7rem;
-  background-color: rgb(182, 182, 182);
+  background-color: rgba(115, 115, 115, 0.9);
+
   display: flex;
   border: 6px solid rgb(80, 80, 80);
   justify-content: space-around;
@@ -213,11 +207,11 @@
 
 .current-high,
 .current-low {
-  /* background-color: rgb(182, 182, 182); */
   font-size: 1.5rem;
+  font-weight: 800;
   display: inline-block;
-  text-shadow: 2px 2px #acacac;
-  color: #001d4b;
+  /* text-shadow: 2px 2px #acacac; */
+  color: #d2d2d2;
   margin: 0.3rem 0;
 }
 
