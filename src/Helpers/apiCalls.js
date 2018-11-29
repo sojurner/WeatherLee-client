@@ -58,7 +58,7 @@ export const fetchLocationPic = async condition => {
   console.log(search);
 
   const response = await fetch(
-    `https://weatherlee-server.herokuapp.com/api/pixabay?query=${search}`
+    `https://weatherlee-server.herokuapp.com/api/pixabay?q=${search}&category=nature`
   );
   const result = await response.json();
   console.log(result);
